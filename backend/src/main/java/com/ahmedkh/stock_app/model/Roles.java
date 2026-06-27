@@ -1,12 +1,8 @@
 package com.ahmedkh.stock_app.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -16,5 +12,10 @@ import lombok.NoArgsConstructor;
 @Table(name="roles")
 public class Roles extends AbstractEntity {
 
-    private String nom;
+    @Column(name = "rolename")
+    private String roleName;
+
+    @ManyToOne
+    @JoinColumn(name = "idutilisateur")
+    private Utilisateur utilisateur;
 }

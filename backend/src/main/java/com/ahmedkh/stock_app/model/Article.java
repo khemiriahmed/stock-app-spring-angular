@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
@@ -16,24 +17,30 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="article")
 public class Article extends AbstractEntity {
-    @Column (name = "codearticle")
-    private String codearticle;
+
+    @Column(name = "codearticle")
+    private String codeArticle;
 
     @Column(name = "designation")
     private String designation;
 
     @Column(name = "prixunitaireht")
-    private BigDecimal prixunitaireht;
+    private BigDecimal prixUnitaireHt;
 
     @Column(name = "tauxtva")
-    private BigDecimal tauxtva;
+    private BigDecimal tauxTva;
 
     @Column(name = "prixunitairettc")
-    private BigDecimal prixunitairettc;
+    private BigDecimal prixUnitaireTtc;
 
+    @Column(name = "photo")
     private String photo;
+
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
+
     @ManyToOne
-    @JoinColumn(name="idcategory")
+    @JoinColumn(name = "idcategory")
     private Category category;
 
 }
