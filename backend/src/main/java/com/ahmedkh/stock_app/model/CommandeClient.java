@@ -16,11 +16,18 @@ import java.util.List;
 @Table(name="commandclient")
 public class CommandeClient extends AbstractEntity {
 
-    @Column(name ="")
+    @Column(name = "code")
     private String code;
 
     @Column(name = "datecommande")
     private Instant dateCommande;
+
+/*    @Column(name = "etatcommande")
+    @Enumerated(EnumType.STRING)
+    private EtatCommande etatCommande;*/
+
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
 
     @ManyToOne
     @JoinColumn(name = "idclient")
