@@ -30,4 +30,18 @@ public class CategoryDto {
                 .designation(category.getDesignation())
                 .build();
     }
+
+
+    public Category toEntity(CategoryDto categoryDto){
+        if(categoryDto == null) {
+            return null;
+        }
+
+        Category category = new Category();
+        category.setId(categoryDto.getId());
+        category.setCode(categoryDto.getCode());
+        category.setDesignation(categoryDto.getDesignation());
+
+        return category;
+    }
 }
