@@ -14,7 +14,8 @@ import java.time.Instant;
 public class AbstractEntity implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
+    @SequenceGenerator(name = "global_seq", sequenceName = "hibernate_sequence", allocationSize = 1)
     private Integer id;
 
     @CreatedDate
@@ -23,7 +24,7 @@ public class AbstractEntity implements Serializable {
     private Instant creationDate;
 
     @LastModifiedDate
-    @Column(name="creationDate")
+    @Column(name="lastModifiedDate")
     @JsonIgnore
     private Instant lastModifiedDate;
 }
