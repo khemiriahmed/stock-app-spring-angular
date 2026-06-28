@@ -1,12 +1,8 @@
 package com.ahmedkh.stock_app.dto;
 
-import com.ahmedkh.stock_app.model.Category;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.ahmedkh.stock_app.model.Article;
 import lombok.Builder;
 import lombok.Data;
-
 import java.math.BigDecimal;
 
 @Builder
@@ -20,13 +16,45 @@ public class ArticleDto {
 
     private String designation;
 
-    private BigDecimal prixUnitaireht;
+    private BigDecimal prixUnitaireHt;
 
     private BigDecimal tauxTva;
 
-    private BigDecimal prixUnitairettc;
+    private BigDecimal prixUnitaireTtc;
 
     private String photo;
 
     private CategoryDto category;
+
+    public static ArticleDto fromEntity(Article article) {
+        if (article == null) {
+            return null;
+        }
+        return ArticleDto.builder()
+                .id(article.getId())
+                .codeArticle(article.getCodeArticle())
+                .designation(article.getDesignation())
+                .photo(article.getPhoto())
+                .prixUnitaireHt(article.getPrixUnitaireHt())
+                .prixUnitaireTtc(article.getPrixUnitaireTtc())
+                .tauxTva(article.getTauxTva())
+                .category(CategoryDto.fromEntity(article.getCategory()))
+                .build();
+    }
+
+    public static Article toEntity(ArticleDto articleDto) {
+        if (articleDto == null) {
+            return null;
+        }
+        Article article = new Article();
+        article.setId(articleDto.getId());
+        article.setCodeArticle(articleDto.getCodeArticle());
+        article.setDesignation(articleDto.getDesignation());
+        article.setPhoto(articleDto.getPhoto());
+        article.setPrixUnitaireHt(articleDto.getPrixUnitaireHt());
+        article.setPrixUnitaireTtc(articleDto.getPrixUnitaireTtc());
+        article.setTauxTva(articleDto.getTauxTva());
+        article.setCategory(CategoryDto.toEntity(articleDto.getCategory()));
+        return article;
+    }
 }

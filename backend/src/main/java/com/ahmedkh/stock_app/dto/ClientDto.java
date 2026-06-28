@@ -1,6 +1,7 @@
 package com.ahmedkh.stock_app.dto;
 
 import com.ahmedkh.stock_app.model.Adresse;
+import com.ahmedkh.stock_app.model.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class ClientDto {
 
     private String prenom;
 
-    private Adresse adresse;
+    private AdresseDto adresse;
 
     private String photo;
 
@@ -27,4 +28,34 @@ public class ClientDto {
 
     @JsonIgnore
     private List<CommandeClientDto> commandeClients;
+
+    public static ClientDto fromEntity(Client client) {
+        if (client == null) {
+            return null;
+        }
+        return ClientDto.builder()
+                .id(client.getId())
+                .nom(client.getNom())
+                .prenom(client.getPrenom())
+                .adresse(AdresseDto.fromEntity(client.getAdresse()))
+                .photo(client.getPhoto())
+                .mail(client.getMail())
+                .numTel(client.getNumTel())
+                .build();
+    }
+
+    public static Client toEntity(ClientDto dto) {
+        if (dto == null) {
+            return null;
+        }
+        Client client = new Client();
+        client.setId(dto.getId());
+        client.setNom(dto.getNom());
+        client.setPrenom(dto.getPrenom());
+        client.setAdresse(AdresseDto.toEntity(dto.getAdresse()));
+        client.setPhoto(dto.getPhoto());
+        client.setMail(dto.getMail());
+        client.setNumTel(dto.getNumTel());
+        return client;
+    }
 }
