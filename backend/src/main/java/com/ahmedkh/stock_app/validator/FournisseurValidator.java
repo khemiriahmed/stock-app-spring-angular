@@ -4,7 +4,7 @@ import com.ahmedkh.stock_app.dto.FournisseurDto;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.util.StringUtils;
-public class FourisseurValidator {
+public class FournisseurValidator {
     public static List<String> validate(FournisseurDto dto) {
         List<String> errors = new ArrayList<>();
 
