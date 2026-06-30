@@ -3,5 +3,5 @@ package com.ahmedkh.stock_app.repository;
 import com.ahmedkh.stock_app.model.LigneVente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LigneVenteRepository extends JpaRepository<Integer, LigneVente> {
+public interface LigneVenteRepository extends JpaRepository<LigneVente , Integer > {
 }

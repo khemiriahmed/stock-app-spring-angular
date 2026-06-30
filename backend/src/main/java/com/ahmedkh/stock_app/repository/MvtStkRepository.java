@@ -3,5 +3,5 @@ package com.ahmedkh.stock_app.repository;
 import com.ahmedkh.stock_app.model.MvtStk;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MvtStkRepository extends JpaRepository<Integer, MvtStk> {
+public interface MvtStkRepository extends JpaRepository<MvtStk , Integer> {
 }

@@ -3,5 +3,5 @@ package com.ahmedkh.stock_app.repository;
 import com.ahmedkh.stock_app.model.Fournisseur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FournisseurRepository extends JpaRepository<Integer, Fournisseur> {
+public interface FournisseurRepository extends JpaRepository<Fournisseur , Integer> {
 }
