@@ -56,7 +56,7 @@ public class ArticleServiceImpl  implements ArticleService {
     }
 
     @Override
-    public ArticleDto findCodeArticle(String codeArticle) {
+    public ArticleDto findByCodeArticle(String codeArticle) {
 
         if (!StringUtils.hasLength(codeArticle)) {
             log.error("Article CODE is null");
