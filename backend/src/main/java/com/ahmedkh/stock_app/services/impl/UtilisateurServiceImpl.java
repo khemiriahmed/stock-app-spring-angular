@@ -11,7 +11,7 @@ import com.ahmedkh.stock_app.services.UtilisateurService;
 import com.ahmedkh.stock_app.validator.UtilisateurValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -25,13 +25,12 @@ import java.util.stream.Collectors;
 public class UtilisateurServiceImpl implements UtilisateurService {
 
     private UtilisateurRepository utilisateurRepository;
-    private PasswordEncoder passwordEncoder;
+   // private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository,
-                                  PasswordEncoder passwordEncoder) {
+    public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
-        this.passwordEncoder = passwordEncoder;
+      //  this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -49,7 +48,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         }
 
 
-        dto.setMoteDePasse(passwordEncoder.encode(dto.getMoteDePasse()));
+       // dto.setMoteDePasse(passwordEncoder.encode(dto.getMoteDePasse()));
 
         return UtilisateurDto.fromEntity(
                 utilisateurRepository.save(

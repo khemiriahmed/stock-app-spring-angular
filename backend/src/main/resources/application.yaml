@@ -16,3 +16,8 @@ spring:
     user:
       name: admin
       password: admin
+flickr:
+  apiKey: e6017aef7bebeffc113de04efec554b4
+  apiSecret: a2e10f69ece5c67c
+  appKey: 72157718699655397-a36ae267891db7e7
+  appSecret: 04e870e57e18c55b
