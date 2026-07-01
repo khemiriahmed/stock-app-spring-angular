@@ -4,6 +4,7 @@ import com.ahmedkh.stock_app.model.Article;
 import com.ahmedkh.stock_app.model.CommandeClient;
 
 import com.ahmedkh.stock_app.model.LigneCommandeClient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ public class LigneCommandeClientDto {
 
     private ArticleDto article;
 
+    @JsonIgnore
     private CommandeClientDto commandeClient;
 
     private BigDecimal quantite;
