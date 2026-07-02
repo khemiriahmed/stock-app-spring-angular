@@ -3,12 +3,16 @@ package com.ahmedkh.stock_app.dto;
 import java.util.List;
 
 import com.ahmedkh.stock_app.model.Category;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoryDto {
 
     private Integer id;
