@@ -23,22 +23,22 @@ public class AbstractEntity implements Serializable {
     @SequenceGenerator(name = "global_seq", sequenceName = "hibernate_sequence", allocationSize = 1)
     private Integer id;
 
-    //@CreatedDate
-    @Column(name="creationDate")
+    @CreatedDate
+    @Column(name="creationDate" , nullable = false , updatable = false)
     private Instant creationDate;
 
-    //@LastModifiedDate
+    @LastModifiedDate
     @Column(name="lastModifiedDate")
     private Instant lastModifiedDate;
 
 
-    @PrePersist
-      void prePersist() {
+    /*@PrePersist
+    void prePersist() {
         creationDate = Instant.now();
     }
 
     @PreUpdate
     void preUpdate(){
         lastModifiedDate = Instant.now();
-    }
+    }*/
 }
