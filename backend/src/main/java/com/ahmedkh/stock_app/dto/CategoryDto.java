@@ -21,6 +21,8 @@ public class CategoryDto {
 
     private String designation;
 
+    private Integer idEntreprise;
+
     private List<ArticleDto> articles;
 
     public static CategoryDto fromEntity(Category category) {
@@ -32,6 +34,7 @@ public class CategoryDto {
                 .id(category.getId())
                 .code(category.getCode())
                 .designation(category.getDesignation())
+                .idEntreprise(category.getIdEntreprise())
                 .build();
     }
 
@@ -45,6 +48,7 @@ public class CategoryDto {
         category.setId(categoryDto.getId());
         category.setCode(categoryDto.getCode());
         category.setDesignation(categoryDto.getDesignation());
+        category.setIdEntreprise(categoryDto.getIdEntreprise());
 
         return category;
     }
