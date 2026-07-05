@@ -1,6 +1,7 @@
 package com.ahmedkh.stock_app.controller;
 
-import com.ahmedkh.stock_app.controller.api.AuthenticationApi;
+import com.ahmedkh.stock_app.dto.auth.AuthenticationRequest;
+import com.ahmedkh.stock_app.dto.auth.AuthenticationResponse;
 import com.ahmedkh.stock_app.model.auth.ExtendedUser;
 import com.ahmedkh.stock_app.services.auth.ApplicationUserDetailsService;
 import com.ahmedkh.stock_app.utils.JwtUtil;

@@ -9,6 +9,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+      session_factory:
+        statement_inspector: com.ahmedkh.stock_app.MyStatementInspector
     show-sql: true
     open-in-view: false
     #database-platform: org.hibernate.dialect.MySQL8Dialect
