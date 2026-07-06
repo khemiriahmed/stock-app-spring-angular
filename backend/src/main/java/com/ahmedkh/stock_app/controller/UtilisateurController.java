@@ -1,6 +1,7 @@
 package com.ahmedkh.stock_app.controller;
 
 import com.ahmedkh.stock_app.controller.api.UtilisateurApi;
+import com.ahmedkh.stock_app.dto.ChangerMotDePasseUtilisateurDto;
 import com.ahmedkh.stock_app.dto.UtilisateurDto;
 import com.ahmedkh.stock_app.services.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,18 @@ public class UtilisateurController implements UtilisateurApi {
     }
 
     @Override
+    public UtilisateurDto changerMotDePasse(ChangerMotDePasseUtilisateurDto dto) {
+        return utilisateurService.changerMotDePasse(dto);
+    }
+
+    @Override
     public UtilisateurDto findById(Integer id) {
         return utilisateurService.findById(id);
+    }
+
+    @Override
+    public UtilisateurDto findByEmail(String email) {
+        return utilisateurService.findByEmail(email);
     }
 
     @Override
