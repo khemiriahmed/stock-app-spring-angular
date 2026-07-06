@@ -10,12 +10,11 @@ import com.ahmedkh.stock_app.repository.ClientRepository;
 import com.ahmedkh.stock_app.repository.CommandeClientRepository;
 import com.ahmedkh.stock_app.services.ClientService;
 import com.ahmedkh.stock_app.validator.ClientValidator;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -65,7 +64,6 @@ public class ClientServiceImpl implements ClientService {
                 .map(ClientDto::fromEntity)
                 .collect(Collectors.toList());
     }
-
 
     @Override
     public void delete(Integer id) {

@@ -10,13 +10,12 @@ import com.ahmedkh.stock_app.repository.CommandeFournisseurRepository;
 import com.ahmedkh.stock_app.repository.FournisseurRepository;
 import com.ahmedkh.stock_app.services.FournisseurService;
 import com.ahmedkh.stock_app.validator.FournisseurValidator;
-import jakarta.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -24,7 +23,6 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     private FournisseurRepository fournisseurRepository;
     private CommandeFournisseurRepository commandeFournisseurRepository;
-
 
     @Autowired
     public FournisseurServiceImpl(FournisseurRepository fournisseurRepository,

@@ -1,5 +1,6 @@
 package com.ahmedkh.stock_app.services.impl;
 
+import com.ahmedkh.stock_app.dto.ChangerMotDePasseUtilisateurDto;
 import com.ahmedkh.stock_app.dto.UtilisateurDto;
 import com.ahmedkh.stock_app.exception.EntityNotFoundException;
 import com.ahmedkh.stock_app.exception.ErrorCodes;
@@ -9,30 +10,30 @@ import com.ahmedkh.stock_app.model.Utilisateur;
 import com.ahmedkh.stock_app.repository.UtilisateurRepository;
 import com.ahmedkh.stock_app.services.UtilisateurService;
 import com.ahmedkh.stock_app.validator.UtilisateurValidator;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
 
 @Service
 @Slf4j
 public class UtilisateurServiceImpl implements UtilisateurService {
 
     private UtilisateurRepository utilisateurRepository;
-   // private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
+    public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository,
+                                  PasswordEncoder passwordEncoder) {
         this.utilisateurRepository = utilisateurRepository;
-      //  this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
-
 
     @Override
     public UtilisateurDto save(UtilisateurDto dto) {
@@ -48,7 +49,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         }
 
 
-       // dto.setMoteDePasse(passwordEncoder.encode(dto.getMoteDePasse()));
+        dto.setMoteDePasse(passwordEncoder.encode(dto.getMoteDePasse()));
 
         return UtilisateurDto.fromEntity(
                 utilisateurRepository.save(
@@ -76,9 +77,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
                 );
     }
 
-
-
-
     @Override
     public List<UtilisateurDto> findAll() {
         return utilisateurRepository.findAll().stream()
@@ -105,7 +103,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
                 );
     }
 
-   /* @Override
+    @Override
     public UtilisateurDto changerMotDePasse(ChangerMotDePasseUtilisateurDto dto) {
         validate(dto);
         Optional<Utilisateur> utilisateurOptional = utilisateurRepository.findById(dto.getId());
@@ -143,5 +141,5 @@ public class UtilisateurServiceImpl implements UtilisateurService {
             throw new InvalidOperationException("Mots de passe utilisateur non conformes:: Impossible de modifier le mote de passe",
                     ErrorCodes.UTILISATEUR_CHANGE_PASSWORD_OBJECT_NOT_VALID);
         }
-    }*/
+    }
 }

@@ -10,17 +10,17 @@ import com.ahmedkh.stock_app.repository.ArticleRepository;
 import com.ahmedkh.stock_app.repository.CategoryRepository;
 import com.ahmedkh.stock_app.services.CategoryService;
 import com.ahmedkh.stock_app.validator.CategoryValidator;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 @Slf4j
 public class CategoryServiceImpl implements CategoryService {
+
     private CategoryRepository categoryRepository;
     private ArticleRepository articleRepository;
 
@@ -70,7 +70,6 @@ public class CategoryServiceImpl implements CategoryService {
                 );
     }
 
-
     @Override
     public List<CategoryDto> findAll() {
         return categoryRepository.findAll().stream()
@@ -84,11 +83,11 @@ public class CategoryServiceImpl implements CategoryService {
             log.error("Category ID is null");
             return;
         }
-       /* List<Article> articles = articleRepository.findAllByCategoryId(id);
+        List<Article> articles = articleRepository.findAllByCategoryId(id);
         if (!articles.isEmpty()) {
             throw new InvalidOperationException("Impossible de supprimer cette categorie qui est deja utilise",
                     ErrorCodes.CATEGORY_ALREADY_IN_USE);
-        }*/
+        }
         categoryRepository.deleteById(id);
     }
 }

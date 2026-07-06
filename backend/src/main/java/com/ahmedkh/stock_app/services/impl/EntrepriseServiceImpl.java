@@ -11,16 +11,15 @@ import com.ahmedkh.stock_app.repository.RolesRepository;
 import com.ahmedkh.stock_app.services.EntrepriseService;
 import com.ahmedkh.stock_app.services.UtilisateurService;
 import com.ahmedkh.stock_app.validator.EntrepriseValidator;
-import jakarta.transaction.Transactional;
+import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
+//import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.util.List;
-import java.util.stream.Collectors;
-
-@Transactional(rollbackOn = Exception.class)
+//@Transactional(rollbackOn = Exception.class)
 @Service
 @Slf4j
 public class EntrepriseServiceImpl implements EntrepriseService {
@@ -52,7 +51,7 @@ public class EntrepriseServiceImpl implements EntrepriseService {
 
         UtilisateurDto savedUser = utilisateurService.save(utilisateur);
 
-       RolesDto rolesDto = RolesDto.builder()
+        RolesDto rolesDto = RolesDto.builder()
                 .roleName("ADMIN")
                 .utilisateur(savedUser)
                 .build();
