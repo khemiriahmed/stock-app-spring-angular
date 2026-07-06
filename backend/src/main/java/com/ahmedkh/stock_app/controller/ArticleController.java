@@ -2,6 +2,9 @@ package com.ahmedkh.stock_app.controller;
 
 import com.ahmedkh.stock_app.controller.api.ArticleApi;
 import com.ahmedkh.stock_app.dto.ArticleDto;
+import com.ahmedkh.stock_app.dto.LigneCommandeClientDto;
+import com.ahmedkh.stock_app.dto.LigneCommandeFournisseurDto;
+import com.ahmedkh.stock_app.dto.LigneVenteDto;
 import com.ahmedkh.stock_app.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +43,27 @@ public class ArticleController implements ArticleApi {
     @Override
     public List<ArticleDto> findAll() {
         return articleService.findAll();
+    }
+
+
+    @Override
+    public List<LigneVenteDto> findHistoriqueVentes(Integer idArticle) {
+        return articleService.findHistoriqueVentes(idArticle);
+    }
+
+    @Override
+    public List<LigneCommandeClientDto> findHistoriaueCommandeClient(Integer idArticle) {
+        return articleService.findHistoriaueCommandeClient(idArticle);
+    }
+
+    @Override
+    public List<LigneCommandeFournisseurDto> findHistoriqueCommandeFournisseur(Integer idArticle) {
+        return articleService.findHistoriqueCommandeFournisseur(idArticle);
+    }
+
+    @Override
+    public List<ArticleDto> findAllArticleByIdCategory(Integer idCategory) {
+        return articleService.findAllArticleByIdCategory(idCategory);
     }
 
     @Override

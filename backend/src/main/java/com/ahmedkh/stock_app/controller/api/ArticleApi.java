@@ -1,6 +1,9 @@
 package com.ahmedkh.stock_app.controller.api;
 
 import com.ahmedkh.stock_app.dto.ArticleDto;
+import com.ahmedkh.stock_app.dto.LigneCommandeClientDto;
+import com.ahmedkh.stock_app.dto.LigneCommandeFournisseurDto;
+import com.ahmedkh.stock_app.dto.LigneVenteDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -43,6 +46,20 @@ public interface ArticleApi {
             @ApiResponse(responseCode = "200", description = "La liste des article / Une liste vide")
     })
     List<ArticleDto> findAll();
+
+
+    @GetMapping(value = APP_ROOT + "/articles/historique/vente/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<LigneVenteDto> findHistoriqueVentes(@PathVariable("idArticle") Integer idArticle);
+
+    @GetMapping(value = APP_ROOT + "/articles/historique/commandeclient/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<LigneCommandeClientDto> findHistoriaueCommandeClient(@PathVariable("idArticle") Integer idArticle);
+
+    @GetMapping(value = APP_ROOT + "/articles/historique/commandefournisseur/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<LigneCommandeFournisseurDto> findHistoriqueCommandeFournisseur(@PathVariable("idArticle") Integer idArticle);
+
+    @GetMapping(value = APP_ROOT + "/articles/filter/category/{idCategory}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<ArticleDto> findAllArticleByIdCategory(@PathVariable("idCategory") Integer idCategory);
+
 
     @DeleteMapping(value = APP_ROOT + "/articles/delete/{idArticle}")
     @Operation(summary = "Supprimer un article", description = "Cette methode permet de supprimer un article par ID")
