@@ -10,9 +10,6 @@ import java.math.BigDecimal;
 
 @Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-
 public class ArticleDto {
 
     private Integer id;
@@ -66,4 +63,5 @@ public class ArticleDto {
         article.setCategory(CategoryDto.toEntity(articleDto.getCategory()));
         return article;
     }
+
 }

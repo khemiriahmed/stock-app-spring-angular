@@ -1,6 +1,7 @@
 package com.ahmedkh.stock_app.dto;
 
 import com.ahmedkh.stock_app.model.Roles;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class RolesDto {
 
     private String roleName;
 
+    @JsonIgnore
     private UtilisateurDto utilisateur;
 
     public static RolesDto fromEntity(Roles roles) {

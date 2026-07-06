@@ -2,6 +2,7 @@ package com.ahmedkh.stock_app.dto;
 
 import com.ahmedkh.stock_app.model.Adresse;
 import com.ahmedkh.stock_app.model.Fournisseur;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -27,7 +28,10 @@ public class FournisseurDto {
 
     private String numTel;
 
-    private List<CommandeFournisseurDto> commandeFournisseur;
+    private Integer idEntreprise;
+
+    @JsonIgnore
+    private List<CommandeFournisseurDto> commandeFournisseurs;
 
     public static FournisseurDto fromEntity(Fournisseur fournisseur) {
         if (fournisseur == null) {
@@ -41,10 +45,9 @@ public class FournisseurDto {
                 .photo(fournisseur.getPhoto())
                 .mail(fournisseur.getMail())
                 .numTel(fournisseur.getNumTel())
-              /*  .idEntreprise(fournisseur.getIdEntreprise())*/
+                .idEntreprise(fournisseur.getIdEntreprise())
                 .build();
     }
-
 
     public static Fournisseur toEntity(FournisseurDto dto) {
         if (dto == null) {
@@ -58,7 +61,7 @@ public class FournisseurDto {
         fournisseur.setPhoto(dto.getPhoto());
         fournisseur.setMail(dto.getMail());
         fournisseur.setNumTel(dto.getNumTel());
-       /* fournisseur.setIdEntreprise(dto.getIdEntreprise());*/
+        fournisseur.setIdEntreprise(dto.getIdEntreprise());
 
         return fournisseur;
     }

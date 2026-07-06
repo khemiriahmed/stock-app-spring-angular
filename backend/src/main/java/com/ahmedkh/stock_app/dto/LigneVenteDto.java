@@ -6,7 +6,6 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-
 @Data
 @Builder
 public class LigneVenteDto {
@@ -21,6 +20,8 @@ public class LigneVenteDto {
 
     private BigDecimal prixUnitaire;
 
+    private Integer idEntreprise;
+
     public static LigneVenteDto fromEntity(LigneVente ligneVente) {
         if (ligneVente == null) {
             return null;
@@ -28,11 +29,11 @@ public class LigneVenteDto {
 
         return LigneVenteDto.builder()
                 .id(ligneVente.getId())
-                /*.vente(VentesDto.fromEntity(ligneVente.getVente()))*/
+                .vente(VentesDto.fromEntity(ligneVente.getVente()))
                 .article(ArticleDto.fromEntity(ligneVente.getArticle()))
                 .quantite(ligneVente.getQuantite())
                 .prixUnitaire(ligneVente.getPrixUnitaire())
-                /*.idEntreprise(ligneVente.getIdEntreprise())*/
+                .idEntreprise(ligneVente.getIdEntreprise())
                 .build();
     }
 
@@ -46,9 +47,8 @@ public class LigneVenteDto {
         ligneVente.setArticle(ArticleDto.toEntity(dto.getArticle()));
         ligneVente.setQuantite(dto.getQuantite());
         ligneVente.setPrixUnitaire(dto.getPrixUnitaire());
-      /*  ligneVente.setIdEntreprise(dto.getIdEntreprise());*/
+        ligneVente.setIdEntreprise(dto.getIdEntreprise());
         return ligneVente;
     }
-
 
 }

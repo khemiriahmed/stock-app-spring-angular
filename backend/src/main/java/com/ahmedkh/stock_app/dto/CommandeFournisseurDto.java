@@ -30,8 +30,6 @@ public class CommandeFournisseurDto {
 
     private List<LigneCommandeFournisseurDto> ligneCommandeFournisseurs;
 
-
-
     public static CommandeFournisseurDto fromEntity(CommandeFournisseur commandeFournisseur) {
         if (commandeFournisseur == null) {
             return null;
@@ -45,7 +43,6 @@ public class CommandeFournisseurDto {
                 .idEntreprise(commandeFournisseur.getIdEntreprise())
                 .build();
     }
-
 
     public static CommandeFournisseur toEntity(CommandeFournisseurDto dto) {
         if (dto == null) {
@@ -64,4 +61,5 @@ public class CommandeFournisseurDto {
     public boolean isCommandeLivree() {
         return EtatCommande.LIVREE.equals(this.etatCommande);
     }
+
 }

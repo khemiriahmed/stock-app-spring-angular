@@ -8,7 +8,6 @@ import com.ahmedkh.stock_app.exception.EntityNotFoundException;
 import com.ahmedkh.stock_app.exception.ErrorCodes;
 import com.ahmedkh.stock_app.exception.InvalidEntityException;
 import com.ahmedkh.stock_app.exception.InvalidOperationException;
-import com.ahmedkh.stock_app.model.Article;
 import com.ahmedkh.stock_app.model.LigneCommandeClient;
 import com.ahmedkh.stock_app.model.LigneCommandeFournisseur;
 import com.ahmedkh.stock_app.model.LigneVente;
@@ -18,14 +17,12 @@ import com.ahmedkh.stock_app.repository.LigneCommandeFournisseurRepository;
 import com.ahmedkh.stock_app.repository.LigneVenteRepository;
 import com.ahmedkh.stock_app.services.ArticleService;
 import com.ahmedkh.stock_app.validator.ArticleValidator;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j

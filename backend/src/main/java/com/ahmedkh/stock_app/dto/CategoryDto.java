@@ -3,6 +3,7 @@ package com.ahmedkh.stock_app.dto;
 import java.util.List;
 
 import com.ahmedkh.stock_app.model.Category;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class CategoryDto {
 
     private Integer idEntreprise;
 
+    @JsonIgnore
     private List<ArticleDto> articles;
 
     public static CategoryDto fromEntity(Category category) {

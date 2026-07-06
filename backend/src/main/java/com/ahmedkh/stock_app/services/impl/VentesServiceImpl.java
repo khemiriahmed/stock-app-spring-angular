@@ -1,6 +1,9 @@
 package com.ahmedkh.stock_app.services.impl;
 
+
+import com.ahmedkh.stock_app.dto.ArticleDto;
 import com.ahmedkh.stock_app.dto.LigneVenteDto;
+import com.ahmedkh.stock_app.dto.MvtStkDto;
 import com.ahmedkh.stock_app.dto.VentesDto;
 import com.ahmedkh.stock_app.exception.EntityNotFoundException;
 import com.ahmedkh.stock_app.exception.ErrorCodes;
@@ -8,21 +11,24 @@ import com.ahmedkh.stock_app.exception.InvalidEntityException;
 import com.ahmedkh.stock_app.exception.InvalidOperationException;
 import com.ahmedkh.stock_app.model.Article;
 import com.ahmedkh.stock_app.model.LigneVente;
+import com.ahmedkh.stock_app.model.SourceMvtStk;
+import com.ahmedkh.stock_app.model.TypeMvtStk;
 import com.ahmedkh.stock_app.model.Ventes;
 import com.ahmedkh.stock_app.repository.ArticleRepository;
 import com.ahmedkh.stock_app.repository.LigneVenteRepository;
 import com.ahmedkh.stock_app.repository.VentesRepository;
+import com.ahmedkh.stock_app.services.MvtStkService;
 import com.ahmedkh.stock_app.services.VentesService;
 import com.ahmedkh.stock_app.validator.VentesValidator;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 @Slf4j
@@ -31,16 +37,16 @@ public class VentesServiceImpl implements VentesService {
     private ArticleRepository articleRepository;
     private VentesRepository ventesRepository;
     private LigneVenteRepository ligneVenteRepository;
-    // private MvtStkService mvtStkService;
+    private MvtStkService mvtStkService;
 
     @Autowired
     public VentesServiceImpl(ArticleRepository articleRepository, VentesRepository ventesRepository,
-                             LigneVenteRepository ligneVenteRepository) {
+                             LigneVenteRepository ligneVenteRepository, MvtStkService mvtStkService) {
         this.articleRepository = articleRepository;
         this.ventesRepository = ventesRepository;
-
+        this.ligneVenteRepository = ligneVenteRepository;
+        this.mvtStkService = mvtStkService;
     }
-
 
     @Override
     public VentesDto save(VentesDto dto) {
@@ -70,12 +76,11 @@ public class VentesServiceImpl implements VentesService {
             LigneVente ligneVente = LigneVenteDto.toEntity(ligneVenteDto);
             ligneVente.setVente(savedVentes);
             ligneVenteRepository.save(ligneVente);
-            //updateMvtStk(ligneVente);
+            updateMvtStk(ligneVente);
         });
 
         return VentesDto.fromEntity(savedVentes);
     }
-
 
     @Override
     public VentesDto findById(Integer id) {
@@ -87,8 +92,6 @@ public class VentesServiceImpl implements VentesService {
                 .map(VentesDto::fromEntity)
                 .orElseThrow(() -> new EntityNotFoundException("Aucun vente n'a ete trouve dans la BDD", ErrorCodes.VENTE_NOT_FOUND));
     }
-
-
 
     @Override
     public VentesDto findByCode(String code) {
@@ -103,16 +106,12 @@ public class VentesServiceImpl implements VentesService {
                 ));
     }
 
-
-
-
     @Override
     public List<VentesDto> findAll() {
         return ventesRepository.findAll().stream()
                 .map(VentesDto::fromEntity)
                 .collect(Collectors.toList());
     }
-
 
     @Override
     public void delete(Integer id) {
@@ -128,5 +127,15 @@ public class VentesServiceImpl implements VentesService {
         ventesRepository.deleteById(id);
     }
 
-
+    private void updateMvtStk(LigneVente lig) {
+        MvtStkDto mvtStkDto = MvtStkDto.builder()
+                .article(ArticleDto.fromEntity(lig.getArticle()))
+                .dateMvt(Instant.now())
+                .typeMvt(TypeMvtStk.SORTIE)
+                .sourceMvt(SourceMvtStk.VENTE)
+                .quantite(lig.getQuantite())
+                .idEntreprise(lig.getIdEntreprise())
+                .build();
+        mvtStkService.sortieStock(mvtStkDto);
+    }
 }
