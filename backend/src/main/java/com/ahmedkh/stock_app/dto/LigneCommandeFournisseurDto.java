@@ -1,6 +1,7 @@
 package com.ahmedkh.stock_app.dto;
 
 
+import com.ahmedkh.stock_app.model.CommandeFournisseur;
 import com.ahmedkh.stock_app.model.LigneCommandeFournisseur;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class LigneCommandeFournisseurDto {
 
     private ArticleDto article;
 
-    private CommandeFournisseurDto commandeFournisseur;
+    private CommandeFournisseur commandeFournisseur;
 
     private BigDecimal quantite;
 
@@ -33,7 +34,7 @@ public class LigneCommandeFournisseurDto {
                 .article(ArticleDto.fromEntity(ligneCommandeFournisseur.getArticle()))
                 .quantite(ligneCommandeFournisseur.getQuantite())
                 .prixUnitaire(ligneCommandeFournisseur.getPrixUnitaire())
-                /*.idEntreprise(ligneCommandeFournisseur.getIdEntreprise())*/
+                .idEntreprise(ligneCommandeFournisseur.getIdEntreprise())
                 .build();
     }
 
@@ -47,8 +48,8 @@ public class LigneCommandeFournisseurDto {
         ligneCommandeFournisseur.setArticle(ArticleDto.toEntity(dto.getArticle()));
         ligneCommandeFournisseur.setPrixUnitaire(dto.getPrixUnitaire());
         ligneCommandeFournisseur.setQuantite(dto.getQuantite());
-      /*  ligneCommandeFournisseur.setIdEntreprise(dto.getIdEntreprise());*/
+        ligneCommandeFournisseur.setIdEntreprise(dto.getIdEntreprise());
         return ligneCommandeFournisseur;
     }
-}
 
+}

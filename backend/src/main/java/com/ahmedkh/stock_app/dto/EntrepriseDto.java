@@ -3,6 +3,7 @@ package com.ahmedkh.stock_app.dto;
 import com.ahmedkh.stock_app.model.Adresse;
 import com.ahmedkh.stock_app.model.Entreprise;
 import com.ahmedkh.stock_app.model.Utilisateur;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -31,6 +32,8 @@ public class EntrepriseDto {
 
     private String siteWeb;
 
+
+    @JsonIgnore
     private List<UtilisateurDto> utilisateurs;
 
     public static EntrepriseDto fromEntity(Entreprise entreprise) {
@@ -48,8 +51,6 @@ public class EntrepriseDto {
                 .numTel(entreprise.getNumTel())
                 .siteWeb(entreprise.getSiteWeb())
                 .build();
-
-
     }
 
     public static Entreprise toEntity(EntrepriseDto dto) {
