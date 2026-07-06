@@ -1,6 +1,7 @@
 package com.ahmedkh.stock_app.dto;
 
 import com.ahmedkh.stock_app.model.CommandeFournisseur;
+import com.ahmedkh.stock_app.model.EtatCommande;
 import com.ahmedkh.stock_app.model.Fournisseur;
 import com.ahmedkh.stock_app.model.LigneCommandeFournisseur;
 import lombok.Builder;
@@ -21,9 +22,14 @@ public class CommandeFournisseurDto {
 
     private Instant dateCommande;
 
+    private EtatCommande etatCommande;
+
     private FournisseurDto fournisseur;
 
+    private Integer idEntreprise;
+
     private List<LigneCommandeFournisseurDto> ligneCommandeFournisseurs;
+
 
 
     public static CommandeFournisseurDto fromEntity(CommandeFournisseur commandeFournisseur) {
@@ -35,9 +41,11 @@ public class CommandeFournisseurDto {
                 .code(commandeFournisseur.getCode())
                 .dateCommande(commandeFournisseur.getDateCommande())
                 .fournisseur(FournisseurDto.fromEntity(commandeFournisseur.getFournisseur()))
-               /* .idEntreprise(commandeFournisseur.getIdEntreprise())*/
+                .etatCommande(commandeFournisseur.getEtatCommande())
+                .idEntreprise(commandeFournisseur.getIdEntreprise())
                 .build();
     }
+
 
     public static CommandeFournisseur toEntity(CommandeFournisseurDto dto) {
         if (dto == null) {
@@ -48,7 +56,12 @@ public class CommandeFournisseurDto {
         commandeFournisseur.setCode(dto.getCode());
         commandeFournisseur.setDateCommande(dto.getDateCommande());
         commandeFournisseur.setFournisseur(FournisseurDto.toEntity(dto.getFournisseur()));
-        /*commandeFournisseur.setIdEntreprise(dto.getIdEntreprise());*/
+        commandeFournisseur.setIdEntreprise(dto.getIdEntreprise());
+        commandeFournisseur.setEtatCommande(dto.getEtatCommande());
         return commandeFournisseur;
+    }
+
+    public boolean isCommandeLivree() {
+        return EtatCommande.LIVREE.equals(this.etatCommande);
     }
 }
