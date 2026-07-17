@@ -14,8 +14,8 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+       "serve": {
+          "builder": "@angular/build:dev-server",
           "options": {
             "outputPath": "dist/frontend",
             "index": "src/index.html",
