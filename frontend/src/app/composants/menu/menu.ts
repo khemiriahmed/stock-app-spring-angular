@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from './menu-sidebar';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
    standalone: true, 
-   imports: [RouterLink],
+   imports: [CommonModule],
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
 })
@@ -118,7 +119,22 @@ export class MenuComponent implements OnInit {
 
   ];
 
-  constructor() {}
+  constructor(
+   private router: Router
+ ) { }
+
+  private lastSelectedMenu: Menu | undefined;
+  
 
   ngOnInit(): void {}
+
+    navigate(menu: Menu): void {
+    if (this.lastSelectedMenu) {
+      this.lastSelectedMenu.active = false;
+    }
+    menu.active = true;
+    this.lastSelectedMenu = menu;
+    this.router.navigate([menu.url]);
+  }
+
 }
