@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import { ButtonAction } from 'src/app/composants/button-action/button-action';
 import { DetailCltFrs } from 'src/app/composants/detail-clt-frs/detail-clt-frs';
 import { Pagination } from 'src/app/composants/pagination/pagination';
@@ -9,6 +10,18 @@ import { Pagination } from 'src/app/composants/pagination/pagination';
   templateUrl: './page-client.html',
   styleUrl: './page-client.scss',
 })
-export class PageClient {
+export class PageClient  {
 
+
+ constructor(
+  private router: Router
+ ){}
+
+ ngOnit():void{
+
+ }
+
+ nouveauClient():void{
+ this.router.navigate(['nouveauclient'])
+ }
 }
