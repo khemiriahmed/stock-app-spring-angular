@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-nouveau-clt-frs',
@@ -6,6 +7,19 @@ import { Component } from '@angular/core';
   templateUrl: './nouveau-clt-frs.html',
   styleUrl: './nouveau-clt-frs.scss',
 })
-export class NouveauCltFrs {
+export class NouveauCltFrs  implements OnInit {
+  origin="";
+
+   constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
+
+    ngOnInit(): void {
+    this.activatedRoute.data.subscribe(data => {
+      this.origin = data[origin];
+    });
+
+}
 
 }
