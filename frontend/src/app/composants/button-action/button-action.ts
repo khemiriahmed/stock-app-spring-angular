@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-button-action',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './button-action.html',
   styleUrl: './button-action.scss',
 })
