@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nouvel-utlisateur',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './nouvel-utlisateur.scss',
 })
 export class NouvelUtlisateur {
+
+  constructor(
+    private router: Router
+  ) { }
+  
+  cancel(): void {
+    this.router.navigate(['utilisateurs']);
+  }
 
 }
