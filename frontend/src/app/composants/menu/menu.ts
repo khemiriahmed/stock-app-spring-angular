@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
     {
       id: '1',
       titre: 'tableau de board',
-      icon: '',
+      icon: 'fas fa-chart-line',
       url: '',
       sousMenu: [
         {

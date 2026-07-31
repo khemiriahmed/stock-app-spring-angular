@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-nouvelle-category',
@@ -8,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class NouvelleCategory {
 
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  
+  ) { }
+
+  cancel(): void {
+    this.router.navigate(['categories']);
+  }
 }

@@ -19,7 +19,21 @@ export class NouveauCltFrs  implements OnInit {
     this.activatedRoute.data.subscribe(data => {
       this.origin = data[origin];
     });
-
 }
 
-}
+saveClick():void
+{
+
+} 
+   cancelClick(): void{
+      if (this.origin =='client') {
+        this.router.navigate(["clients"]);
+       } else if (this.origin === 'fournisseur'){
+          this.router.navigate(['fournisseurs']);
+        }
+      }
+    }
+
+
+
+
