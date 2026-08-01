@@ -18,6 +18,7 @@ import { PageUtilisateur } from './pages/utilisateur/page-utilisateur/page-utili
 import { NouvelUtlisateur } from './pages/utilisateur/nouvel-utlisateur/nouvel-utlisateur';
 import { PageProfile } from './pages/profile/page-profile/page-profile';
 import { ChangerMotDePass } from './pages/profile/changer-mot-de-pass/changer-mot-de-pass';
+import { ApplicationGuardService } from './services/guard/application-guard';
 
 export const routes: Routes = [
   {
@@ -31,40 +32,48 @@ export const routes: Routes = [
   {
     path: '',
     component: PageDashboard,
+      
 
     children: [
       {
         path: 'statistiques',
         component: PageStatistique,
+        canActivate:[ApplicationGuardService]
       },
       {
         path: 'articles',
         component: PageArticle,
+          canActivate:[ApplicationGuardService]
       },
 
       {
         path: 'nouvelarticle',
         component: NouvelArticle,
+          canActivate:[ApplicationGuardService]
       },
 
       {
         path: 'mvtstk',
         component: PageMvtstk,
+          canActivate:[ApplicationGuardService]
       },
 
       {
         path: 'clients',
         component: PageClient,
+          canActivate:[ApplicationGuardService]
       },
 
       {
         path: 'nouveauclient',
         component: NouveauCltFrs,
+          canActivate:[ApplicationGuardService]
       },
 
       {
         path: 'commandesclient',
         component: PageCmdCltFrs,
+          canActivate:[ApplicationGuardService],
         data: {
           origin: 'client'
         }
@@ -73,6 +82,7 @@ export const routes: Routes = [
       {
         path: 'nouvellecommandeclt',
         component: NouvelleCmdCltFrs,
+          canActivate:[ApplicationGuardService],
           data: {
           origin: 'client'
         }
@@ -81,12 +91,14 @@ export const routes: Routes = [
       {
         path: 'fournisseurs',
         component: PageFournisseur,
+          canActivate:[ApplicationGuardService]
          
       },
 
       {
         path: 'nouveaufournisseur',
         component: NouveauCltFrs,
+          canActivate:[ApplicationGuardService],
          data: {
           origin: 'fournisseur'
         }
@@ -95,6 +107,7 @@ export const routes: Routes = [
       {
         path: 'commandesfournisseur',
         component: PageCmdCltFrs,
+          canActivate:[ApplicationGuardService],
          data: {
           origin: 'fournisseur'
         }
@@ -103,36 +116,43 @@ export const routes: Routes = [
       {
         path: 'nouvellecommandefrs',
         component: NouvelleCmdCltFrs,
+          canActivate:[ApplicationGuardService],
       },
 
       {
         path: 'categories',
         component: PageCategories,
+          canActivate:[ApplicationGuardService],
       },
 
       {
         path: 'nouvellecategorie',
         component: NouvelleCategory,
+          canActivate:[ApplicationGuardService],
       },
 
       {
         path: 'utilisateurs',
         component: PageUtilisateur,
+          canActivate:[ApplicationGuardService],
       },
 
       {
         path: 'nouvelutilisateur',
         component: NouvelUtlisateur,
+          canActivate:[ApplicationGuardService],
       },
 
       {
         path: 'profil',
         component: PageProfile,
+          canActivate:[ApplicationGuardService],
       },
 
       {
         path: 'changermotdepasse',
         component: ChangerMotDePass,
+          canActivate:[ApplicationGuardService],
       },
 
     ],
