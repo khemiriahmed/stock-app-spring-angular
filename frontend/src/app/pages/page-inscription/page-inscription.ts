@@ -55,4 +55,12 @@ export class PageInscription implements OnInit {
       this.router.navigate(['changermotdepasse']);
     });
   }
+
+    getUserByEmail(email?: string): void {
+    this.userService.getUserByEmail(email)
+    .subscribe(user => {
+      this.userService.setConnectedUser(user);
+    });
+  }
+  
 }
