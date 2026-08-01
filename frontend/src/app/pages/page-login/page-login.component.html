@@ -4,15 +4,23 @@
       <h2>Se connecter</h2>
     </div>
     <div class="card-body">
+
+        <div class="alert alert-danger" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+
+      
         <div class="mb-3">
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+             <input type="email" class="form-control" placeholder="E-mail" [(ngModel)] = "authenticationRequest.login">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Mot de passe" [(ngModel)] = "authenticationRequest.password">
         </div>
         <div class="mb-3 d-flex justify-content-between">
             <a [routerLink]="['/inscrire']"  class="btn btn-link">S'inscrire</a>
-            <a type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Se connecter</a>
+            <button type="button" class="btn btn-primary" (click)="login()">
+          <i class="fas fa-check"></i>&nbsp;Se connecter
+        </button>
         </div>
     </div>
 </div>
