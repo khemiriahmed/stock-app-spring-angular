@@ -8,6 +8,7 @@ import { Entreprise } from '../../services/entreprise/entreprise';
 import { AdresseDto } from '../../../gs-api/src/models/adresse-dto';
 import { UserService } from '../../services/user/user';
 import { AuthenticationRequest } from '../../../gs-api/src/models/authentication-request';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-inscription',
@@ -21,7 +22,10 @@ export class PageInscription implements OnInit {
   errorsMsg: Array<string> = [];
 
 
-  constructor(private entrepriseService: Entreprise) {}
+  constructor(private entrepriseService: Entreprise,
+     private userService: UserService,
+      private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -29,7 +33,7 @@ export class PageInscription implements OnInit {
     this.entrepriseDto.adresse=this.adresse;
     this.entrepriseService.sinscrire(this.entrepriseDto).subscribe(
        (entrepriseDto) => {
-      //   //this.connectEntreprise();
+       this.connectEntreprise();
       },
     
       (error) => {
@@ -38,17 +42,17 @@ export class PageInscription implements OnInit {
     );
   }
 
-  // connectEntreprise(): void {
-  //   const authenticationRequest: AuthenticationRequest = {
-  //     login: this.entrepriseDto.email,
-  //     password: 'som3R@nd0mP@$$word'
-  //   };
-  //   this.userService.login(authenticationRequest)
-  //   .subscribe(response => {
-  //     this.userService.setAccessToken(response);
-  //     this.getUserByEmail(authenticationRequest.login);
-  //     localStorage.setItem('origin', 'inscription');
-  //     this.router.navigate(['changermotdepasse']);
-  //   });
-  // }
+  connectEntreprise(): void {
+    const authenticationRequest: AuthenticationRequest = {
+      login: this.entrepriseDto.email,
+      password: 'som3R@nd0mP@$$word'
+    };
+    this.userService.login(authenticationRequest)
+    .subscribe(response => {
+      this.userService.setAccessToken(response);
+      this.getUserByEmail(authenticationRequest.login);
+      localStorage.setItem('origin', 'inscription');
+      this.router.navigate(['changermotdepasse']);
+    });
+  }
 }
