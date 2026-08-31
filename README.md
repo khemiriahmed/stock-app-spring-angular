@@ -3,7 +3,7 @@
 <p align="center">
   <b>Application Full Stack de Gestion de Stock</b>
 </p>
-
+ 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk" />
   <img src="https://img.shields.io/badge/Spring%20Boot-4.x-brightgreen?style=for-the-badge&logo=springboot" />
