@@ -15,7 +15,7 @@ class VentesService extends __BaseService {
   static readonly findAllPath = '/gestiondestock/v1/ventes/all';
   static readonly savePath = '/gestiondestock/v1/ventes/create';
   static readonly deletePath = '/gestiondestock/v1/ventes/delete/{idVente}';
-  static readonly findByCodePath = '/gestiondestock/v1/ventes/{codeVente}';
+  static readonly findByCodePath = '/gestiondestock/v1/ventes/filter/{codeVente}';
   static readonly findByIdPath = '/gestiondestock/v1/ventes/{idVente}';
 
   constructor(
@@ -139,7 +139,7 @@ class VentesService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/gestiondestock/v1/ventes/${codeVente}`,
+      this.rootUrl + `/gestiondestock/v1/ventes/filter/${codeVente}`,
       __body,
       {
         headers: __headers,

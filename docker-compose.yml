@@ -1,0 +1,59 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: stock-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-stock_db}
+    ports:
+      - "${MYSQL_PORT:-3307}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD:-root}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    networks:
+      - stocknet
+
+  backend:
+    build:
+      context: ./backend
+    image: stock-app-backend:latest
+    container_name: stock-backend
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-stock_db}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "${BACKEND_PORT:-8081}:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - stocknet
+
+  frontend:
+    build:
+      context: ./frontend
+    image: stock-app-frontend:latest
+    container_name: stock-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-4201}:80"
+    depends_on:
+      - backend
+    networks:
+      - stocknet
+
+volumes:
+  mysql_data:
+
+networks:
+  stocknet:
+    driver: bridge
