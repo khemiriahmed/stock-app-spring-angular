@@ -53,6 +53,10 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
             }
         }
         MDC.put("idEntreprise", idEntreprise);
-        chain.doFilter(request, response);
+        try {
+            chain.doFilter(request, response);
+        } finally {
+            MDC.remove("idEntreprise");
+        }
     }
 }
