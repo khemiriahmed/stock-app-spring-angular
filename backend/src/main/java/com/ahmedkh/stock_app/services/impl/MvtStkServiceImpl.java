@@ -35,7 +35,11 @@ public class MvtStkServiceImpl implements MvtStkService {
             return BigDecimal.valueOf(-1);
         }
         articleService.findById(idArticle);
-        return repository.stockReelArticle(idArticle);
+        BigDecimal stock = repository.stockReelArticle(idArticle);
+        if (stock == null) {
+            return BigDecimal.ZERO;
+        }
+        return stock;
     }
 
     @Override

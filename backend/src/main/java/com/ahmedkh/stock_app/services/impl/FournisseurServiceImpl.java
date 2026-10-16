@@ -5,7 +5,7 @@ import com.ahmedkh.stock_app.exception.EntityNotFoundException;
 import com.ahmedkh.stock_app.exception.ErrorCodes;
 import com.ahmedkh.stock_app.exception.InvalidEntityException;
 import com.ahmedkh.stock_app.exception.InvalidOperationException;
-import com.ahmedkh.stock_app.model.CommandeClient;
+import com.ahmedkh.stock_app.model.CommandeFournisseur;
 import com.ahmedkh.stock_app.repository.CommandeFournisseurRepository;
 import com.ahmedkh.stock_app.repository.FournisseurRepository;
 import com.ahmedkh.stock_app.services.FournisseurService;
@@ -73,7 +73,7 @@ public class FournisseurServiceImpl implements FournisseurService {
             log.error("Fournisseur ID is null");
             return;
         }
-        List<CommandeClient> commandeFournisseur = commandeFournisseurRepository.findAllByFournisseurId(id);
+        List<CommandeFournisseur> commandeFournisseur = commandeFournisseurRepository.findAllByFournisseurId(id);
         if (!commandeFournisseur.isEmpty()) {
             throw new InvalidOperationException("Impossible de supprimer un fournisseur qui a deja des commandes",
                     ErrorCodes.FOURNISSEUR_ALREADY_IN_USE);
