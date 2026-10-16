@@ -1,0 +1,10 @@
+target
+.git
+.gitignore
+.dockerignore
+Dockerfile
+.idea
+*.iml
+HELP.md
+.DS_Store
+/docs
