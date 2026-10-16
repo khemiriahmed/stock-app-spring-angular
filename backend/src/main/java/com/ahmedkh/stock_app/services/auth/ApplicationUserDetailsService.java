@@ -36,10 +36,14 @@ public class ApplicationUserDetailsService implements UserDetailsService {
                 authorities.add(new SimpleGrantedAuthority(role.getRoleName()))
         );
 
+        Integer entrepriseId = null;
+        if (utilisateur.getEntreprise() != null) {
+            entrepriseId = utilisateur.getEntreprise().getId();
+        }
         return new ExtendedUser(
                 utilisateur.getEmail(),
                 utilisateur.getMoteDePasse(),
-                utilisateur.getEntreprise().getId(),
+                entrepriseId,
                 authorities
         );
     }

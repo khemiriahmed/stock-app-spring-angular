@@ -27,7 +27,7 @@ public class MvtStkValidator {
         if (dto.getArticle() == null || dto.getArticle().getId() == null) {
             errors.add("Veuillez renseigner l'article");
         }
-        if (!StringUtils.hasLength(dto.getTypeMvt().name())) {
+        if (dto.getTypeMvt() == null || !StringUtils.hasLength(dto.getTypeMvt().name())) {
             errors.add("Veuillez renseigner le type du mouvement");
         }
 
