@@ -17,7 +17,7 @@ import static com.ahmedkh.stock_app.utils.Constants.APP_ROOT;
 @Tag(name = "Article", description = APP_ROOT)
 public interface ArticleApi {
 
-    @PostMapping(value = APP_ROOT + "/article/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = APP_ROOT + "/articles/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Enregistrer un article", description = "Cette methode permet d'enregistrer ou modifier un article")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "L'objet article cree / modifie"),
@@ -25,7 +25,7 @@ public interface ArticleApi {
     })
     ArticleDto save(@RequestBody ArticleDto dto);
 
-    @GetMapping(value = APP_ROOT + "/article/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/articles/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Rechercher un article par ID", description = "Cette methode permet de chercher un article par son ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "L'article a ete trouve dans la BDD"),
