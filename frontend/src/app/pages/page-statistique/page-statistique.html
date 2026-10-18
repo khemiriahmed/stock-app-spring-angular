@@ -1,1 +1,126 @@
-<p>page-statistique works!</p>
+<div class="stats-page fade-in">
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">Statistiques</h1>
+      <p class="page-subtitle">Vue d'ensemble de votre activité et de votre stock.</p>
+    </div>
+    <button type="button" class="btn btn-secondary">
+      <i class="fas fa-calendar-days"></i>&nbsp;30 derniers jours
+    </button>
+  </div>
+
+  <!-- KPI cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-card-icon kpi-indigo"><i class="fas fa-boxes-stacked"></i></div>
+      <div class="kpi-card-body">
+        <span class="kpi-label">Articles en stock</span>
+        <span class="kpi-value">1 248</span>
+        <span class="kpi-trend up"><i class="fas fa-arrow-trend-up"></i> +6,2%</span>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-card-icon kpi-violet"><i class="fas fa-basket-shopping"></i></div>
+      <div class="kpi-card-body">
+        <span class="kpi-label">Commandes</span>
+        <span class="kpi-value">327</span>
+        <span class="kpi-trend up"><i class="fas fa-arrow-trend-up"></i> +4,1%</span>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-card-icon kpi-amber"><i class="fas fa-euro-sign"></i></div>
+      <div class="kpi-card-body">
+        <span class="kpi-label">Chiffre d'affaires</span>
+        <span class="kpi-value">42 350 €</span>
+        <span class="kpi-trend up"><i class="fas fa-arrow-trend-up"></i> +12%</span>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-card-icon kpi-rose"><i class="fas fa-triangle-exclamation"></i></div>
+      <div class="kpi-card-body">
+        <span class="kpi-label">Stock faible</span>
+        <span class="kpi-value">7</span>
+        <span class="kpi-trend down"><i class="fas fa-arrow-trend-down"></i> à réapprovisionner</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+    <div class="section-card">
+      <div class="chart-head">
+        <h3>Évolution des ventes</h3>
+        <span class="badge badge-soft-success">+18%</span>
+      </div>
+      <div class="bar-chart">
+        <div class="bar" style="height: 45%"><span>Jan</span></div>
+        <div class="bar" style="height: 62%"><span>Fév</span></div>
+        <div class="bar" style="height: 38%"><span>Mar</span></div>
+        <div class="bar" style="height: 78%"><span>Avr</span></div>
+        <div class="bar" style="height: 56%"><span>Mai</span></div>
+        <div class="bar active" style="height: 92%"><span>Juin</span></div>
+        <div class="bar" style="height: 70%"><span>Juil</span></div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="chart-head">
+        <h3>Répartition du stock</h3>
+      </div>
+      <div class="donut-wrap">
+        <div class="donut"></div>
+        <ul class="legend">
+          <li><span class="dot dot-indigo"></span> Électronique <strong>40%</strong></li>
+          <li><span class="dot dot-violet"></span> Mobilier <strong>30%</strong></li>
+          <li><span class="dot dot-amber"></span> Vêtements <strong>18%</strong></li>
+          <li><span class="dot dot-slate"></span> Autres <strong>12%</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top produits -->
+  <div class="section-card">
+    <div class="chart-head">
+      <h3>Produits les plus vendus</h3>
+      <a class="btn btn-sm btn-outline-primary">Voir tout</a>
+    </div>
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Produit</th>
+          <th>Catégorie</th>
+          <th class="text-end">Vendus</th>
+          <th class="text-end">CA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank rank-1">1</span></td>
+          <td><strong>Ordinateur portable Pro</strong></td>
+          <td>Électronique</td>
+          <td class="text-end">128</td>
+          <td class="text-end">15 360 €</td>
+        </tr>
+        <tr>
+          <td><span class="rank rank-2">2</span></td>
+          <td><strong>Chaise ergonomique</strong></td>
+          <td>Mobilier</td>
+          <td class="text-end">96</td>
+          <td class="text-end">9 120 €</td>
+        </tr>
+        <tr>
+          <td><span class="rank rank-3">3</span></td>
+          <td><strong>Écran 27\" 4K</strong></td>
+          <td>Électronique</td>
+          <td class="text-end">74</td>
+          <td class="text-end">7 400 €</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
