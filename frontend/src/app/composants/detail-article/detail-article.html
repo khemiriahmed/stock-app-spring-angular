@@ -1,95 +1,78 @@
-<div class="row mb-1 mr-0 custom-border">
-  <div class="col-md-1 custom-border-right p-1 text-center mb-1 mt-1 ">
-    <!-- <img [src]="articleDto.photo ? articleDto.photo : 'assets/product.png'" width="100px" height="100px"> -->
-    <img  src='assets/product.png' width="100px" height="100px">
-  </div>
-
-<!--  Details article-->
-  <div class="col-md-5 custom-border-right mb-1 mt-1 ">
-    <div class="col">
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <!-- <div class="col-md-11">{{ articleDto.codeArticle }}</div> -->
-        <div class="col-md-11">.codeArticle </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <!-- <div class="col-md-11">{{ articleDto.designation }}</div> -->
-        <div class="col-md-11">designation </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-dollar-sign blue-color"></i></div>
-        <!-- <div class="col-md-11">{{ articleDto.prixUnitaireHt }} €</div> -->
-        <div class="col-md-11">prixUnitaireHt €</div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-dollar-sign blue-color"></i></div>
-        <!-- <div class="col-md-11">{{ articleDto.prixUnitaireTtc }} €</div> -->
-        <div class="col-md-11">prixUnitaireTtc €</div>
+<div class="detail-row">
+  <div class="row g-3 align-items-center">
+    <!-- Image -->
+    <div class="col-md-2 col-4">
+      <div class="detail-thumb-wrap">
+        <img src="assets/product.png" class="detail-thumb" alt="article">
       </div>
     </div>
-  </div>
 
-<!--  details categorie-->
-  <div class="col-md-3 custom-border-right mb-1 mt-1 ">
-    <div class="row">
-      <div class="col-md-2">
-        <i class="fas fa-flag-checkered blue-color"></i>
+    <!-- Infos article -->
+    <div class="col-md-4 col-8">
+      <div class="detail-info-line">
+        <i class="fas fa-barcode"></i>
+        <span>Code article</span>
       </div>
-      <div class="col-md-10">
-        <div class="row">
-          <!-- <div class="col-md-12">{{ articleDto.category?.code }}</div> -->
-          <div class="col-md-12">articleDto.category?.code </div>
-          <!-- <div class="col-md-12">{{ articleDto.category?.designation }}</div> -->
-          <div class="col-md-12">articleDto.category?.designation </div>
+      <div class="detail-info-line">
+        <i class="fas fa-tag"></i>
+        <span>Désignation</span>
+      </div>
+      <div class="detail-info-line">
+        <i class="fas fa-euro-sign"></i>
+        <span>Prix HT</span>
+      </div>
+      <div class="detail-info-line">
+        <i class="fas fa-euro-sign"></i>
+        <span>Prix TTC</span>
+      </div>
+    </div>
+
+    <!-- Catégorie -->
+    <div class="col-md-3 col-12">
+      <span class="detail-section-label">Catégorie</span>
+      <div class="detail-info-line">
+        <i class="fas fa-flag-checkered"></i>
+        <div class="d-flex flex-column">
+          <span>Code</span>
+          <small class="text-muted">Désignation</small>
         </div>
       </div>
     </div>
-  </div>
 
-<!--  boutons action-->
-  <div class="col-md-3 mb-1 mt-1 ">
-    <div class="row">
-      <div class="col-md-4">
-        <!-- <button type="button" class="btn btn-link" (click)="modifierArticle()"> -->
-        <button type="button" class="btn btn-link">
-          <i class="fas fa-pencil-alt"></i>&nbsp;Modifier
+    <!-- Actions -->
+    <div class="col-md-3 col-12">
+      <div class="detail-actions">
+        <button type="button" class="btn btn-sm btn-outline-primary">
+          <i class="fas fa-pen"></i>&nbsp;Modifier
         </button>
-      </div>
-      <div class="col-md-4">
-        <!-- <button type="button" class="btn btn-link text-danger" data-toggle="modal" [attr.data-target]="'#modalDeleteArticle' + articleDto.id"> -->
-        <button type="button" class="btn btn-link text-danger" data-toggle="modal" [attr.data-target]="'#modalDeleteArticle' ">
-          <i class="fas fa-trash-alt"></i>&nbsp;Supprimer
+        <button type="button" class="btn btn-sm btn-outline-danger">
+          <i class="fas fa-trash"></i>&nbsp;Supprimer
         </button>
-      </div>
-      <div class="col-md-4">
-        <button type="button" class="btn btn-link ">
-          <i class="far fa-list-alt"></i>&nbsp;Details
+        <button type="button" class="btn btn-sm btn-secondary">
+          <i class="far fa-list-alt"></i>&nbsp;Détails
         </button>
       </div>
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="modalDeleteArticle" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-  /* <div class="modal fade" id="modalDeleteArticle{{ articleDto.id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" */
-       aria-hidden="true">
-    <div class="modal-dialog">
+
+  <!-- Modal suppression -->
+  <div class="modal fade" id="modalDeleteArticle" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h5 class="modal-title">Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Etes vous-sur de vouloir supprimer cet article?
+          Êtes-vous sûr de vouloir supprimer cet article ?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <i class="fas fa-ban"></i>&nbsp;Annuler</button>
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="confirmerEtSupprimerArticle()"> -->
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-            <i class="fas fa-trash-alt"></i>&nbsp;Supprimer</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-ban"></i>&nbsp;Annuler
+          </button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            <i class="fas fa-trash"></i>&nbsp;Supprimer
+          </button>
         </div>
       </div>
     </div>
