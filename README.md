@@ -111,14 +111,4 @@ docker compose down               # arrêter
 docker compose down -v            # arrêter + supprimer le volume MySQL
 
 
-### Architecture Docker
-
-
-Navigateur ──▶ nginx :80 (conteneur frontend, port hôte 4201)
-                   │  /gestiondestock/*  (reverse proxy)
-                   ▼
-              backend :8080 (Spring Boot, port hôte 8081)
-                   │
-                   ▼
-              mysql :3306 (MySQL 8, port hôte 3307, volume mysql_data)
 
