@@ -1,59 +1,105 @@
-<div class="container my-container">
-<div class="card justify-content-md-center">
-    <div class="card-header text-center">
-      <h2>S'inscrire</h2>
+<div class="auth-wrapper signup">
+  <aside class="auth-hero">
+    <div class="auth-hero-content">
+      <span class="hero-logo"><i class="fas fa-building-circle-check"></i></span>
+      <h1>Créer votre entreprise</h1>
+      <p>Quelques informations suffisent pour démarrer avec Gestion de Stock.</p>
+      <ul class="hero-features">
+        <li><i class="fas fa-circle-check"></i> Espace isolé par entreprise</li>
+        <li><i class="fas fa-circle-check"></i> Prêt à l'emploi immédiatement</li>
+        <li><i class="fas fa-circle-check"></i> Sécurisé et hébergé</li>
+      </ul>
     </div>
-    <div class="card-body">
+    <div class="hero-glow"></div>
+  </aside>
 
-         <div class="alert alert-danger" *ngIf="errorsMsg.length > 0">
-        <div *ngFor="let msg of errorsMsg">
-          <span >{{msg}}</span>
+  <section class="auth-form-side">
+    <div class="auth-card wide fade-in">
+      <header class="auth-head">
+        <h2>Inscription</h2>
+        <p>Renseignez les informations de votre société.</p>
+      </header>
+
+      <div class="alert alert-danger" *ngIf="errorsMsg.length">
+        <div>
+          <div *ngFor="let msg of errorsMsg">
+            <i class="fas fa-circle-exclamation"></i>&nbsp;{{ msg }}
+          </div>
         </div>
       </div>
 
-        <div class="mb-3">
-            <input type="text" class="form-control"   placeholder="Enter Code fiscal">
+      <form (ngSubmit)="inscrire()">
+        <div class="field">
+          <label>Nom de l'entreprise</label>
+          <input type="text" class="form-input" placeholder="Ex : Ma Société SARL"
+                 name="nom" [(ngModel)]="entrepriseDto.nom">
         </div>
 
-        <div class="mb-3">
-            <input type="text" class="form-control"  placeholder="Enter email">
+        <div class="grid-2">
+          <div class="field">
+            <label>Code fiscal</label>
+            <input type="text" class="form-input" placeholder="Code fiscal"
+                   name="codeFiscal" [(ngModel)]="entrepriseDto.codeFiscal">
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <input type="email" class="form-input" placeholder="contact@societe.com"
+                   name="email" [(ngModel)]="entrepriseDto.email">
+          </div>
         </div>
 
-           <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="entrepriseDto.nom">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Code fiscal" [(ngModel)]="entrepriseDto.codeFiscal">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="E-mail" [(ngModel)]="entrepriseDto.email">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Adresse 1" [(ngModel)]="adresse.adresse1">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Adresse 2" [(ngModel)]="adresse.adresse2">
-      </div><div class="mb-3">
-      <input type="text" class="form-control" placeholder="Ville" [(ngModel)]="adresse.ville">
+        <div class="grid-2">
+          <div class="field">
+            <label>Téléphone</label>
+            <input type="text" class="form-input" placeholder="Numéro de téléphone"
+                   name="numTel" [(ngModel)]="entrepriseDto.numTel">
+          </div>
+          <div class="field">
+            <label>Adresse</label>
+            <input type="text" class="form-input" placeholder="Adresse 1"
+                   name="adresse1" [(ngModel)]="adresse.adresse1">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Complément</label>
+            <input type="text" class="form-input" placeholder="Adresse 2"
+                   name="adresse2" [(ngModel)]="adresse.adresse2">
+          </div>
+          <div class="field">
+            <label>Ville</label>
+            <input type="text" class="form-input" placeholder="Ville"
+                   name="ville" [(ngModel)]="adresse.ville">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Code postal</label>
+            <input type="text" class="form-input" placeholder="Code postal"
+                   name="codePostale" [(ngModel)]="adresse.codePostale">
+          </div>
+          <div class="field">
+            <label>Pays</label>
+            <input type="text" class="form-input" placeholder="Pays"
+                   name="pays" [(ngModel)]="adresse.pays">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Description</label>
+          <textarea class="form-input" rows="2" placeholder="Description de l'entreprise"
+                    name="description" [(ngModel)]="entrepriseDto.description"></textarea>
+        </div>
+
+        <div class="auth-actions">
+          <a [routerLink]="['/login']" class="btn btn-secondary">Retour</a>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-check"></i>&nbsp;Créer mon entreprise
+          </button>
+        </div>
+      </form>
     </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Code postal" [(ngModel)]="adresse.codePostale">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Pays" [(ngModel)]="adresse.pays" >
-      </div>
-      <div class="mb-3">
-        <textarea type="password" class="form-control" placeholder="Description" [(ngModel)]="entrepriseDto.description"></textarea>
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Numero de telephone" [(ngModel)]="entrepriseDto.numTel">
-      </div>
-
-
-
-        <div class="mb-3 d-flex justify-content-between">
-          
-              <a [routerLink]="['/login']"  class="btn btn-link">S'inscrire</a>
-            <a  class="btn btn-primary" (click)="inscrire()"><i class="fas fa-check"></i> S'inscrire</a>
-        </div>
-    </div>
+  </section>
 </div>
