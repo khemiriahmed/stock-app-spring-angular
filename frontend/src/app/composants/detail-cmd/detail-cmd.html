@@ -1,40 +1,22 @@
-<div class="row mb-1 mr-0 custom-border">
-  <!--  Details article-->
-  <div class="col-md-3 custom-border-right mb-1 mt-1 ">
-    <div class="row text-center">
-      <div class="col-md-11"> ligneCommande.article?.codeArticle </div>
-    </div>
+<div class="line-row">
+  <div class="line-col">
+    <span class="line-label">Article</span>
+    <strong>ligneCommande.article?.codeArticle</strong>
   </div>
-
-  <div class="col-md-3 custom-border-right mb-1 mt-1 ">
-    <div class="row">
-      <div class="col-md-12 text-center">
-         ligneCommande.article?.designation 
-      </div>
-    </div>
+  <div class="line-col">
+    <span class="line-label">Désignation</span>
+    <span>ligneCommande.article?.designation</span>
   </div>
-
-  <div class="col-md-2 custom-border-right mb-1 mt-1 ">
-    <div class="row">
-      <div class="col-md-12 text-center">
-         ligneCommande.quantite 
-      </div>
-    </div>
+  <div class="line-col">
+    <span class="line-label">Quantité</span>
+    <span>ligneCommande.quantite</span>
   </div>
-
-  <div class="col-md-2 custom-border-right mb-1 mt-1 ">
-    <div class="row">
-      <div class="col-md-12 text-center">
-     ligneCommande.prixUnitaire
-      </div>
-    </div>
+  <div class="line-col">
+    <span class="line-label">Prix unitaire</span>
+    <span>ligneCommande.prixUnitaire €</span>
   </div>
-
-  <div class="col-md-2 mb-1 mt-1">
-    <div class="row">
-      <div class="col-md-12 text-center">
-         ligneCommande.prixUnitaire && ligneCommande.quantite ? +ligneCommande.prixUnitaire * +ligneCommande.quantite : '' 
-      </div>
-    </div>
+  <div class="line-col">
+    <span class="line-label">Total</span>
+    <strong class="text-primary">ligneCommande.prixUnitaire &amp;&amp; ligneCommande.quantite ? +ligneCommande.prixUnitaire * +ligneCommande.quantite : '' €</strong>
   </div>
 </div>

@@ -1,38 +1,27 @@
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item" *ngFor="let menu of menuProperties">
-    <h2 class="accordion-header" id="heading-{{menu.id}}">
-      <button
-        class="accordion-button"
-        type="button"
-        data-bs-toggle="collapse"
-        [attr.data-bs-target]="'#collapse-' + menu.id"
-        aria-expanded="true"
-        [attr.aria-controls]="'collapse-' + menu.id"
-      >
-      <i class="{{menu.icon}}"></i>
-        {{ menu.titre }}
-      </button>
-    </h2>
-    <div
-      id="collapse-{{menu.id}}"
-      class="accordion-collapse collapse "
-      [attr.aria-labelledby]="'collapse-' + menu.id"
-      data-bs-parent="#accordionExample"
+<nav class="sidebar-nav">
+  <div class="nav-group" *ngFor="let menu of menuProperties">
+    <button
+      type="button"
+      class="nav-group-title"
+      [class.open]="menu.open"
+      (click)="toggleGroupe(menu)"
     >
-      <!-- <div class="accordion-body" *ngFor="let sousMenu of menu.sousMenu">
-        {{ sousMenu.titre }}
-      </div> -->
+      <i class="{{ menu.icon }} nav-icon"></i>
+      <span class="nav-label">{{ menu.titre }}</span>
+      <i class="fas fa-chevron-down nav-chevron" [class.rotated]="menu.open"></i>
+    </button>
 
-     <div class="card">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let sousMenu of menu.sousMenu" [ngClass]="{'text-white bg-primary': sousMenu.active, '': !sousMenu.active}">
-            <a href="javascript:void(0);" (click)="navigate(sousMenu)" style="color: inherit;">
-              <i class="{{sousMenu.icon}}"></i>&nbsp;
-              {{sousMenu.titre}}
-            </a>
-          </li>
-        </ul>
-      </div>
+    <div class="nav-submenu" [class.open]="menu.open">
+      <a
+        href="javascript:void(0);"
+        class="nav-item"
+        *ngFor="let sousMenu of menu.sousMenu"
+        [class.active]="sousMenu.active"
+        (click)="navigate(sousMenu)"
+      >
+        <i class="{{ sousMenu.icon }} nav-item-icon"></i>
+        <span>{{ sousMenu.titre }}</span>
+      </a>
     </div>
   </div>
-</div>
+</nav>

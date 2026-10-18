@@ -1,24 +1,22 @@
-<div class="row">
-  <div class="col-md-8">
-    <div class="input-group flex-nowrap">
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-      </div>
-    </div>
+<div class="topbar">
+  <div class="topbar-search">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Rechercher un article, un client..." />
   </div>
-  <div class="col-md-4">
-    <div class="row">
-      <div class="col-md-9 text-right">
-        <!-- <span>Bonjour {{connectedUser.nom}}&nbsp;</span> -->
-        <span>Bonjour </span>
-      </div>
 
-      <div class="col-md-3">
-        <a href="javascript:void(0);" [routerLink]="['/profil']" >
-          <img src="favicon.ico" class="rounded-circle" />
-        </a>
-      </div>
-    </div>
+  <div class="topbar-actions">
+    <button type="button" class="icon-btn" title="Notifications">
+      <i class="far fa-bell"></i>
+      <span class="dot"></span>
+    </button>
+
+    <a class="user-chip" [routerLink]="['/profil']">
+      <span class="user-avatar">AK</span>
+      <span class="user-meta">
+        <strong>Bonjour</strong>
+        <small>Mon profil</small>
+      </span>
+      <i class="fas fa-chevron-down"></i>
+    </a>
   </div>
 </div>

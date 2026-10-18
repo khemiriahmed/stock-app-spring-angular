@@ -1,57 +1,42 @@
-<div class="row mb-1 mr-0 custom-border">
-  <div class="col-md-1 custom-border-right p-1 text-center mb-1 mt-1 ">
-    <img src="assets/product.png" width="100px" height="100px">
-  </div>
-
-  <!--  Details article-->
-  <div class="col-md-5 custom-border-right mb-1 mt-1 ">
-    <div class="col">
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <div class="col-md-10">cltFrs?.nom </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <div class="col-md-10">cltFrs?.prenom </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-phone-alt blue-color"></i></div>
-        <div class="col-md-10"> cltFrs?.numTel </div>
+  <div class="detail-row">
+  <div class="row g-3 align-items-center">
+    <div class="col-md-3 col-12">
+      <div class="detail-info-line">
+        <i class="fas fa-user"></i>
+        <span>Nom &amp; Prénom</span>
       </div>
     </div>
-  </div>
 
-  <!--  details commande-->
-  <div class="col-md-3 custom-border-right mb-1 mt-1 ">
-    <div class="col">
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-qrcode blue-color"></i></div>
-        <div class="col-md-10">commande.code </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-calendar-check blue-color"></i></div>
-        <div class="col-md-10">commande.dateCommande</div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-cart-arrow-down blue-color"></i></div>
-        <div class="col-md-10"> commande.etatCommande </div>
+    <div class="col-md-3 col-12">
+      <div class="detail-info-line">
+        <i class="fas fa-phone"></i>
+        <span>Numéro de téléphone</span>
       </div>
     </div>
-  </div>
 
-  <!--  boutons action-->
-  <div class="col-md-3 mb-1 mt-1 ">
-    <div class="row">
-      <div class="col-md-6 text-center">
-        <button type="button" class="btn btn-link" >
-          <i class="fas fa-pencil-alt blue-color"></i>&nbsp;
-          Modifier
+    <div class="col-md-3 col-12">
+      <span class="detail-section-label">Commande</span>
+      <div class="detail-info-line">
+        <i class="fas fa-qrcode"></i>
+        <span>Code commande</span>
+      </div>
+      <div class="detail-info-line">
+        <i class="fas fa-calendar-check"></i>
+        <span>Date commande</span>
+      </div>
+      <div class="detail-info-line">
+        <i class="fas fa-cart-arrow-down"></i>
+        <span>État</span>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-12">
+      <div class="detail-actions">
+        <button type="button" class="btn btn-sm btn-outline-primary">
+          <i class="fas fa-pen"></i>&nbsp;Modifier
         </button>
-      </div>
-      <div class="col-md-6 text-center">
-        <button type="button" class="btn btn-link">
-          <i class="fas fa-trash-alt blue-color"></i>&nbsp;
-          Supprimer
+        <button type="button" class="btn btn-sm btn-outline-danger">
+          <i class="fas fa-trash"></i>&nbsp;Supprimer
         </button>
       </div>
     </div>
