@@ -1,0 +1,12 @@
+# Environnement local Docker (contient des secrets)
+.env
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+docs
