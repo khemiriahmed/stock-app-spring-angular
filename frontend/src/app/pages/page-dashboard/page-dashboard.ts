@@ -9,4 +9,6 @@ import { Header } from 'src/app/composants/header/header';
   templateUrl: './page-dashboard.html',
   styleUrl: './page-dashboard.scss',
 })
-export class PageDashboard {}
+export class PageDashboard {
+  year = new Date().getFullYear();
+}
