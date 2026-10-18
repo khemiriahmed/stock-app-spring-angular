@@ -1,79 +1,73 @@
-<div class="col mb-3">
-  <div class="col-md-12 mb-3 mt-3">
-    <button  style="background-color: transparent; border: none;">
-    <!-- <button (click)="fileInput.click()" style="background-color: transparent; border: none;"> -->
-      <img  class="rounded-circle" width="200px" height="200px" />
-      <!-- <img [src]="imgUrl" class="rounded-circle" width="200px" height="200px" /> -->
-      <!-- <input hidden type="file" #fileInput (change)="onFileInput(fileInput.files)"> -->
-      <input hidden type="file" #fileInput>
-    </button>
-  </div>
-  <hr>
-  <div class="col-md-12">
-    <div class="col-md-12 mb-3">
-      <h2><i class="fas fa-info-circle blue-color"></i>&nbsp;Information de l'article</h2>
+<div class="form-page fade-in">
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">Nouvel article</h1>
+      <p class="page-subtitle">Ajoutez un article à votre catalogue.</p>
     </div>
-    <div class="col-md-12">
-      <div class="alert alert-danger">
-        <!-- <div *ngFor="let msg of errorMsg"> -->
-        <div>
-          <span >msg</span>
-        </div>
-      </div>
-      <form>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" name="codearticle" placeholder="Code article"
-             //[(ngModel)]="articleDto.codeArticle"
-             >
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" name="designation" placeholder="Designation"
-             /* [(ngModel)]="articleDto.designation" */
-             >
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" name="prixunitht" placeholder="Prix unitaire HT"
-                   /* (input)="calculerTTC()" */
-                   /* [(ngModel)]="articleDto.prixUnitaireHt"> */
-                   >
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" name="tauxtva" placeholder="Taux TVA"
-                  // (input)="calculerTTC()"
-                   //[(ngModel)]="articleDto.tauxTva">
-                   >
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" name="prixunitttc" placeholder="Prix unitaire TTC" 
-             /* [(ngModel)]="articleDto.prixUnitaireTtc" */
-             >
-          </div>
-          <div class="col">
-            <!-- <select class="form-control" name="cat" [(ngModel)]="categorieDto.id"> -->
-            <select class="form-control" name="cat">
-              <option [value]="null">Selectionner une categorie</option>
-              <!-- <option *ngFor="let cat of listeCategorie" [value]="cat.id">{{ cat.code }} - {{ cat.designation }}</option> -->
-              <option >cat.code  - cat.designation </option>
-            </select>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="col-md-12 text-right">
-    <button class="btn btn-danger mr-3" (click)="cancel()">
-      <i class="fas fa-ban"></i>&nbsp;
-      Annuler
-    </button>
-    <button class="btn btn-primary" (click)="enregistrerArticle()">
-      <i class="fas fa-save"></i>&nbsp;
-      Enregitrer
+    <button type="button" class="btn btn-secondary" (click)="cancel()">
+      <i class="fas fa-arrow-left"></i>&nbsp;Retour
     </button>
   </div>
 
+  <div class="section-card">
+    <div class="form-layout">
+      <!-- Photo -->
+      <div class="photo-uploader">
+        <div class="uploader-circle">
+          <i class="fas fa-camera"></i>
+          <img class="preview" alt="" />
+        </div>
+        <span class="uploader-hint">Cliquez pour ajouter une photo</span>
+        <input hidden type="file">
+      </div>
+
+      <!-- Champs -->
+      <div class="form-fields">
+        <h3 class="form-section-title">
+          <i class="fas fa-circle-info blue-color"></i>&nbsp;Information de l'article
+        </h3>
+
+        <form>
+          <div class="form-grid">
+            <div class="field">
+              <label>Code article</label>
+              <input type="text" class="form-input" name="codearticle" placeholder="Ex : ART-001">
+            </div>
+            <div class="field">
+              <label>Désignation</label>
+              <input type="text" class="form-input" name="designation" placeholder="Nom de l'article">
+            </div>
+            <div class="field">
+              <label>Prix unitaire HT</label>
+              <input type="text" class="form-input" name="prixunitht" placeholder="0.00 €">
+            </div>
+            <div class="field">
+              <label>Taux TVA</label>
+              <input type="text" class="form-input" name="tauxtva" placeholder="Ex : 20">
+            </div>
+            <div class="field">
+              <label>Prix unitaire TTC</label>
+              <input type="text" class="form-input" name="prixunitttc" placeholder="0.00 €">
+            </div>
+            <div class="field">
+              <label>Catégorie</label>
+              <select class="form-input" name="cat">
+                <option [value]="null">Sélectionner une catégorie</option>
+                <option>Catégorie</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">
+        <i class="fas fa-ban"></i>&nbsp;Annuler
+      </button>
+      <button type="button" class="btn btn-primary" (click)="enregistrerArticle()">
+        <i class="fas fa-save"></i>&nbsp;Enregistrer
+      </button>
+    </div>
+  </div>
 </div>

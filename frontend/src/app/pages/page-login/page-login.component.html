@@ -1,27 +1,69 @@
-<div class="container my-container">
-<div class="card justify-content-md-center">
-    <div class="card-header text-center">
-      <h2>Se connecter</h2>
+<div class="auth-wrapper">
+  <!-- Panneau gauche (marque) -->
+  <aside class="auth-hero">
+    <div class="auth-hero-content">
+      <span class="hero-logo"><i class="fas fa-boxes-stacked"></i></span>
+      <h1>Gestion de Stock</h1>
+      <p>Pilotez votre activité, vos articles et vos commandes en toute simplicité.</p>
+      <ul class="hero-features">
+        <li><i class="fas fa-circle-check"></i> Suivi du stock en temps réel</li>
+        <li><i class="fas fa-circle-check"></i> Commandes clients &amp; fournisseurs</li>
+        <li><i class="fas fa-circle-check"></i> Statistiques et tableaux de bord</li>
+      </ul>
     </div>
-    <div class="card-body">
+    <div class="hero-glow"></div>
+  </aside>
 
-        <div class="alert alert-danger" *ngIf="errorMessage">
-        {{errorMessage}}
+  <!-- Formulaire -->
+  <section class="auth-form-side">
+    <div class="auth-card fade-in">
+      <header class="auth-head">
+        <h2>Se connecter</h2>
+        <p>Bienvenue, veuillez saisir vos identifiants.</p>
+      </header>
+
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <i class="fas fa-circle-exclamation"></i>&nbsp;{{ errorMessage }}
       </div>
 
-      
-        <div class="mb-3">
-             <input type="email" class="form-control" placeholder="E-mail" [(ngModel)] = "authenticationRequest.login">
+      <form (ngSubmit)="login()">
+        <div class="field">
+          <label>Adresse e-mail</label>
+          <div class="input-icon">
+            <i class="far fa-envelope"></i>
+            <input
+              type="email"
+              placeholder="vous@entreprise.com"
+              name="login"
+              autocomplete="username"
+              [(ngModel)]="authenticationRequest.login"
+            />
+          </div>
         </div>
-        <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Mot de passe" [(ngModel)] = "authenticationRequest.password">
+
+        <div class="field">
+          <label>Mot de passe</label>
+          <div class="input-icon">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              placeholder="••••••••"
+              name="password"
+              autocomplete="current-password"
+              [(ngModel)]="authenticationRequest.password"
+            />
+          </div>
         </div>
-        <div class="mb-3 d-flex justify-content-between">
-            <a [routerLink]="['/inscrire']"  class="btn btn-link">S'inscrire</a>
-            <button type="button" class="btn btn-primary" (click)="login()">
-          <i class="fas fa-check"></i>&nbsp;Se connecter
+
+        <button type="submit" class="btn btn-primary btn-block-login">
+          <i class="fas fa-right-to-bracket"></i>&nbsp;Se connecter
         </button>
-        </div>
+      </form>
+
+      <p class="auth-foot">
+        Pas encore de compte ?
+        <a [routerLink]="['/inscrire']">Créer une entreprise</a>
+      </p>
     </div>
-</div>
+  </section>
 </div>

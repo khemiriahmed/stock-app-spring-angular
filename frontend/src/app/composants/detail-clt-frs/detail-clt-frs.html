@@ -1,94 +1,73 @@
-<div class="row mb-1 mr-0 custom-border">
-  <div class="col-md-1 custom-border-right p-1 text-center mb-1 mt-1 ">
-    <img width="100px" height="100px">
-    <!-- <img [src]="clientFournisseur.photo ? clientFournisseur.photo : 'assets/product.png'" width="100px" height="100px"> -->
-  </div>
-
-  <!--  Details article-->
-  <div class="col-md-5 custom-border-right mb-1 mt-1 ">
-    <div class="col">
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <!-- <div class="col-md-10">{{ clientFournisseur.nom }}</div> -->
-        <div class="col-md-10"> clientFournisseur.nom </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-        <!-- <div class="col-md-10">{{ clientFournisseur.prenom }}</div> -->
-        <div class="col-md-10">clientFournisseur.prenom </div>
-      </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-phone-alt blue-color"></i></div>
-        <!-- <div class="col-md-10">{{ clientFournisseur.numTel }}</div> -->
-        <div class="col-md-10">clientFournisseur.numTel </div>
+<div class="detail-row">
+  <div class="row g-3 align-items-center">
+    <div class="col-md-2 col-4">
+      <div class="detail-thumb-wrap">
+        <img src="assets/product.png" class="detail-thumb" alt="client">
       </div>
     </div>
-  </div>
 
-  <!--  details categorie-->
-  <div class="col-md-3 custom-border-right mb-1 mt-1 ">
-    <div class="col">
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-home blue-color"></i></div>
-        <!-- <div class="col-md-10">{{ clientFournisseur.adresse?.adresse1 }}&nbsp;{{ clientFournisseur.adresse?.adresse2 }}</div> -->
-        <div class="col-md-10"> clientFournisseur.adresse?.adresse1 &nbsp; clientFournisseur.adresse?.adresse2 </div>
+    <div class="col-md-4 col-8">
+      <div class="detail-info-line">
+        <i class="fas fa-user"></i>
+        <span>Nom</span>
       </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-map-marker-alt blue-color"></i></div>
-        <!-- <div class="col-md-10">clientFournisseur.adresse?.codePostale &nbsp; clientFournisseur.adresse?.ville </div> -->
-        <div class="col-md-10"> clientFournisseur.adresse?.codePostale &nbsp; clientFournisseur.adresse?.ville </div>
+      <div class="detail-info-line">
+        <i class="fas fa-user"></i>
+        <span>Prénom</span>
       </div>
-      <div class="row">
-        <div class="col-md-1"><i class="fas fa-globe-europe blue-color"></i></div>
-        <!-- <div class="col-md-10">{{ clientFournisseur.adresse?.pays }}</div> -->
-        <div class="col-md-10">clientFournisseur.adresse?.pays </div>
-      </div>
+      <div class="detail-info-line">
+        <i class="fas fa-phone"></i>
+        <span>Numéro de téléphone</span>
       </div>
     </div>
-  
 
-  <!--  boutons action-->
-  <div class="col-md-3 mb-1 mt-1 ">
-    <div class="row">
-      <div class="col-md-4">
-        <!-- <button type="button" class="btn btn-link" (click)="modifierClientFournisseur()"> -->
-        <button type="button" class="btn btn-link" >
-          <i class="fas fa-pencil-alt"></i>&nbsp;Modifier
-        </button>
+    <div class="col-md-3 col-12">
+      <span class="detail-section-label">Adresse</span>
+      <div class="detail-info-line">
+        <i class="fas fa-home"></i>
+        <span>Adresse 1 &amp; 2</span>
       </div>
-      <div class="col-md-4">
-        <button type="button" class="btn btn-link text-danger" data-toggle="modal" [attr.data-target]="'#modalDelete' ">
-          <i class="fas fa-trash-alt"></i>&nbsp;Supprimer
-        </button>
+      <div class="detail-info-line">
+        <i class="fas fa-location-dot"></i>
+        <span>Code postal &amp; Ville</span>
       </div>
-      <div class="col-md-4">
-        <button type="button" class="btn btn-link ">
-          <i class="far fa-list-alt"></i>&nbsp;Details
+      <div class="detail-info-line">
+        <i class="fas fa-earth-europe"></i>
+        <span>Pays</span>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-12">
+      <div class="detail-actions">
+        <button type="button" class="btn btn-sm btn-outline-primary">
+          <i class="fas fa-pen"></i>&nbsp;Modifier
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-danger"
+                data-bs-toggle="modal" data-bs-target="#modalDeleteCltFrs">
+          <i class="fas fa-trash"></i>&nbsp;Supprimer
+        </button>
+        <button type="button" class="btn btn-sm btn-secondary">
+          <i class="far fa-list-alt"></i>&nbsp;Détails
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="modalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1"
-       aria-labelledby="staticBackdropLabel"
-       aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="modalDeleteCltFrs" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h5 class="modal-title">Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          Etes vous-sur de vouloir supprimer ?
-        </div>
+        <div class="modal-body">Êtes-vous sûr de vouloir supprimer cet élément ?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <i class="fas fa-ban"></i>&nbsp;Annuler</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-            <i class="fas fa-trash-alt"></i>&nbsp;Supprimer</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-ban"></i>&nbsp;Annuler
+          </button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            <i class="fas fa-trash"></i>&nbsp;Supprimer
+          </button>
         </div>
       </div>
     </div>

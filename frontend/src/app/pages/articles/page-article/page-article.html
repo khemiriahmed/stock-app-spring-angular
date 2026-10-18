@@ -1,34 +1,17 @@
-<div class="col">
-  <div class="row m-3">
-    <div class="col-md-8 p-0">
-      <h1>Liste des articles</h1>
+<div class="list-page fade-in">
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">Liste des articles</h1>
+      <p class="page-subtitle">Gérez votre catalogue d'articles et leurs informations.</p>
     </div>
-    <div class="col-md-4 text-right">
-      <!-- <app-boutton-action
-        /* (clickEvent)="nouvelArticle()" */
-      ></app-boutton-action> -->
-      <app-button-action
-       (clickEvent)="nouvelArticle()" 
-      ></app-button-action>
-    </div>
-    <div class="alert alert-danger">
-      <!-- {{ errorMsg }} -->
-    </div>
-  </div>
-  <div class="col m-3">
-    <!-- <app-detail-article
-       *ngFor="let article of listArticle"
-      [articleDto]="article"
-      (suppressionResult)="handleSuppression($event)" 
-    >
-    </app-detail-article> -->
-    <app-detail-article></app-detail-article>
-  </div>
-  <div class="row mb-3" >
-  <!-- <div class="row mb-3" *ngIf="listArticle.length"> -->
-    <div class=" col-md-12 text-center">
-      <app-pagination></app-pagination>
-    </div>
+    <app-button-action (clickEvent)="nouvelArticle()"></app-button-action>
   </div>
 
+  <div class="list-body">
+    <app-detail-article></app-detail-article>
+  </div>
+
+  <div class="list-pagination">
+    <app-pagination></app-pagination>
+  </div>
 </div>

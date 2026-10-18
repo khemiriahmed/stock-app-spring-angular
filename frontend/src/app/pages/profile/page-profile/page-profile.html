@@ -1,45 +1,81 @@
-<div class="row m-3">
-  <div class="card col-md-4 text-center mr-3">
-    <div class="col">
-      <div class="mb-3 mt-3">
-        <img src="assets/product.png" class="rounded-circle" width="200px" height="200px"/>
+<div class="form-page fade-in">
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">Mon profil</h1>
+      <p class="page-subtitle">Consultez et mettez à jour vos informations.</p>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="modifierMotDePasse()">
+      <i class="fas fa-key"></i>&nbsp;Changer mot de passe
+    </button>
+  </div>
+
+  <div class="section-card">
+    <div class="form-layout">
+      <div class="photo-uploader">
+        <div class="uploader-circle">
+          <i class="fas fa-user"></i>
+          <img class="preview" alt="" />
+        </div>
+        <span class="uploader-hint">Photo de profil</span>
+        <input hidden type="file">
       </div>
-      <div class="mb-3">
-        <h2>Nom Prenom</h2>
-        <small class="form-text text-muted">Adresse, Ville, 12345</small>
-      </div>
-      <div class="col mb-3 p-0">
-        <button type="button" class="btn btn-primary mr-3" ><i class="fas fa-pencil-alt"></i>&nbsp;Modifier le
-          profil</button>
-        <button type="button" class="btn btn-warning" (click)="modifierMotDePasse()" ><i class="fas fa-lock"></i>&nbsp;Changer le mot de passe</button>
+
+      <div class="form-fields">
+        <h3 class="form-section-title">
+          <i class="fas fa-circle-info blue-color"></i>&nbsp;Informations personnelles
+        </h3>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>Nom</label>
+            <input type="text" class="form-input" placeholder="Nom">
+          </div>
+          <div class="field">
+            <label>Prénom</label>
+            <input type="text" class="form-input" placeholder="Prénom">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" class="form-input" placeholder="Email">
+          </div>
+          <div class="field">
+            <label>Date de naissance</label>
+            <input type="date" class="form-input">
+          </div>
+        </div>
+
+        <h3 class="form-section-title mt-4">
+          <i class="fas fa-location-dot blue-color"></i>&nbsp;Adresse
+        </h3>
+        <div class="form-grid">
+          <div class="field">
+            <label>Adresse</label>
+            <input type="text" class="form-input" placeholder="Adresse">
+          </div>
+          <div class="field">
+            <label>Code postal</label>
+            <input type="text" class="form-input" placeholder="Code postal">
+          </div>
+          <div class="field">
+            <label>Ville</label>
+            <input type="text" class="form-input" placeholder="Ville">
+          </div>
+          <div class="field">
+            <label>Pays</label>
+            <input type="text" class="form-input" placeholder="Pays">
+          </div>
+          <div class="field">
+            <label>Numéro de téléphone</label>
+            <input type="text" class="form-input" placeholder="Téléphone">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary">
+            <i class="fas fa-save"></i>&nbsp;Enregistrer
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="card col-md-7">
-    <table class="table">
-      <tbody>
-      <tr>
-        <th scope="row">Nom complet</th>
-        <td>nom prenom</td>
-      </tr>
-      <tr>
-        <th scope="row">Email</th>
-        <td>adresse@email.com</td>
-      </tr>
-      <tr>
-        <th scope="row">telephone</th>
-        <td>011 22 33 44 55 66</td>
-      </tr>
-      <tr>
-        <th scope="row">Adresse</th>
-        <td>Adresse, Ville, 12345</td>
-      </tr>
-      <tr>
-        <th scope="row">Entreprise</th>
-        <td>Nom entreprise</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-
 </div>

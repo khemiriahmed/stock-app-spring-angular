@@ -1,84 +1,63 @@
-<div class="col mb-3">
-  <div class="col-md-12 mb-3 mt-3">
-    <button  style="background-color: transparent; border: none;">
-      <img [src]="" class="rounded-circle" width="200px" height="200px" />
-      <input hidden type="file" #fileInput>
-    </button>
-  </div>
-  <hr>
-  <div class="col-md-12">
-    <div class="col-md-12 mb-3">
-      <h2><i class="fas fa-info-circle blue-color"></i>&nbsp;Information du {{origin}} fffd </h2>
+<div class="form-page fade-in">
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">Nouveau {{ origin === 'fournisseur' ? 'fournisseur' : 'client' }}</h1>
+      <p class="page-subtitle">
+        Renseignez les informations du {{ origin === 'fournisseur' ? 'fournisseur' : 'client' }}.
+      </p>
     </div>
-    <div class="alert alert-danger">
-      <div >
-         msg 
-      </div>
-    </div>
-    <div class="col-md-12">
-      <form>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Nom"
-            name="nom" >
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Adresse 1"
-            name="adresse1" >
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Prenom"
-            name="prenom" 
-            >
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Adresse 2"
-                   name="adresse2" >
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="email" class="form-control" placeholder="E-mail"
-                   name="email" >
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Ville"
-                   name="ville" >
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Telephone"
-                   name="numtel" >
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Code postal"
-                   name="codepostal">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            &nbsp;
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Pays"
-                   name="pays">
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="col-md-12 text-right">
-    <button class="btn btn-danger mr-3" (click)="cancelClick()" >
-      <i class="fas fa-ban"></i>&nbsp;
-      Annuler
-    </button>
-    <button class="btn btn-primary" (click)="saveClick()">
-      <i class="fas fa-save"></i>&nbsp;
-      Enregitrer
+    <button type="button" class="btn btn-secondary" (click)="cancelClick()">
+      <i class="fas fa-arrow-left"></i>&nbsp;Retour
     </button>
   </div>
 
+  <div class="section-card">
+    <h3 class="form-section-title">
+      <i class="fas fa-address-card blue-color"></i>&nbsp;Informations générales
+    </h3>
+
+    <div class="form-grid">
+      <div class="field">
+        <label>Nom</label>
+        <input type="text" class="form-input" placeholder="Nom">
+      </div>
+      <div class="field">
+        <label>Prénom</label>
+        <input type="text" class="form-input" placeholder="Prénom">
+      </div>
+      <div class="field">
+        <label>Adresse</label>
+        <input type="text" class="form-input" placeholder="Adresse">
+      </div>
+      <div class="field">
+        <label>Code postal</label>
+        <input type="text" class="form-input" placeholder="Code postal">
+      </div>
+      <div class="field">
+        <label>Ville</label>
+        <input type="text" class="form-input" placeholder="Ville">
+      </div>
+      <div class="field">
+        <label>Pays</label>
+        <input type="text" class="form-input" placeholder="Pays">
+      </div>
+      <div class="field">
+        <label>Numéro de téléphone</label>
+        <input type="text" class="form-input" placeholder="Téléphone">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" class="form-input" placeholder="Email">
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" (click)="cancelClick()">
+        <i class="fas fa-ban"></i>&nbsp;Annuler
+      </button>
+      <button type="button" class="btn btn-primary" (click)="saveClick()">
+        <i class="fas fa-save"></i>&nbsp;Enregistrer
+      </button>
+    </div>
+  </div>
 </div>

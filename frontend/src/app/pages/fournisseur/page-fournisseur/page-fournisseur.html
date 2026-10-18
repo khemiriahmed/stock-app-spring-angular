@@ -1,26 +1,17 @@
-<div class="col">
-  <div class="row m-3">
-    <div class="col-md-8 p-0">
-      <h1>Liste des fournisseurs</h1>
+<div class="list-page fade-in">
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">Liste des fournisseurs</h1>
+      <p class="page-subtitle">Gérez vos fournisseurs et leurs coordonnées.</p>
     </div>
-    <div class="col-md-4 text-right">
-      <app-button-action
-      (clickEvent)="nouveaufournisseur()"
-      ></app-button-action>
-    </div>
-  </div>
-  <div class="col m-3">
-    <div class="alert alert-danger" >
-       errorMsg 
-    </div>
-    <app-detail-clt-frs
-
-    ></app-detail-clt-frs>
-  </div>
-  <div class="row mb-3">
-    <div class=" col-md-12 text-center">
-      <app-pagination></app-pagination>
-    </div>
+    <app-button-action (clickEvent)="nouveaufournisseur()"></app-button-action>
   </div>
 
+  <div class="list-body">
+    <app-detail-clt-frs></app-detail-clt-frs>
+  </div>
+
+  <div class="list-pagination">
+    <app-pagination></app-pagination>
+  </div>
 </div>

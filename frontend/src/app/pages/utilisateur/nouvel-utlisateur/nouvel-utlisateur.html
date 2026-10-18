@@ -1,66 +1,83 @@
-<div class="col mb-3">
-  <div class="col-md-12 mb-3">
-    <img src="assets/product.png" class="rounded-circle" width="200px" height="200px" />
-  </div>
-  <hr>
-  <div class="col-md-12">
-    <div class="col-md-12 mb-3">
-      <h2><i class="fas fa-info-circle blue-color"></i>&nbsp;Information de l'utilisateur</h2>
+<div class="form-page fade-in">
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">Nouvel utilisateur</h1>
+      <p class="page-subtitle">Créez un compte pour un membre de votre équipe.</p>
     </div>
-    <div class="col-md-12">
-      <form>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Nom">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Adresse 1">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Prenom">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Adresse 2">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="E-mail">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Ville">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Telephone">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Code postal">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            &nbsp;
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Pays">
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="col-md-12 text-right">
-    <button class="btn btn-danger mr-3" (click)="cancel()" >
-      <i class="fas fa-ban"></i>&nbsp;
-      Annuler
-    </button>
-    <button class="btn btn-primary" >
-      <i class="fas fa-save"></i>&nbsp;
-      Enregitrer
+    <button type="button" class="btn btn-secondary" (click)="cancel()">
+      <i class="fas fa-arrow-left"></i>&nbsp;Retour
     </button>
   </div>
 
+  <div class="section-card">
+    <div class="form-layout">
+      <div class="photo-uploader">
+        <div class="uploader-circle">
+          <i class="fas fa-user-plus"></i>
+          <img class="preview" alt="" />
+        </div>
+        <span class="uploader-hint">Photo de profil</span>
+        <input hidden type="file">
+      </div>
+
+      <div class="form-fields">
+        <h3 class="form-section-title">
+          <i class="fas fa-user blue-color"></i>&nbsp;Informations personnelles
+        </h3>
+        <div class="form-grid">
+          <div class="field">
+            <label>Nom</label>
+            <input type="text" class="form-input" placeholder="Nom">
+          </div>
+          <div class="field">
+            <label>Prénom</label>
+            <input type="text" class="form-input" placeholder="Prénom">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" class="form-input" placeholder="Email">
+          </div>
+          <div class="field">
+            <label>Date de naissance</label>
+            <input type="date" class="form-input">
+          </div>
+          <div class="field">
+            <label>Adresse</label>
+            <input type="text" class="form-input" placeholder="Adresse">
+          </div>
+          <div class="field">
+            <label>Numéro de téléphone</label>
+            <input type="text" class="form-input" placeholder="Téléphone">
+          </div>
+        </div>
+
+        <h3 class="form-section-title mt-4">
+          <i class="fas fa-lock blue-color"></i>&nbsp;Sécurité
+        </h3>
+        <div class="form-grid">
+          <div class="field">
+            <label>Mot de passe</label>
+            <input type="password" class="form-input" placeholder="Mot de passe">
+          </div>
+          <div class="field">
+            <label>Rôle</label>
+            <select class="form-input">
+              <option [value]="null">Sélectionner un rôle</option>
+              <option>Administrateur</option>
+              <option>Utilisateur</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" (click)="cancel()">
+            <i class="fas fa-ban"></i>&nbsp;Annuler
+          </button>
+          <button type="button" class="btn btn-primary">
+            <i class="fas fa-save"></i>&nbsp;Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

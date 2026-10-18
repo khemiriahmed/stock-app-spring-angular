@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from './menu-sidebar';
 import { CommonModule } from '@angular/common';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
-   standalone: true, 
-   imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
 })
@@ -14,9 +14,10 @@ export class MenuComponent implements OnInit {
   public menuProperties: Array<Menu> = [
     {
       id: '1',
-      titre: 'tableau de board',
+      titre: 'Tableau de bord',
       icon: 'fas fa-chart-line',
       url: '',
+      open: true,
       sousMenu: [
         {
           id: '11',
@@ -33,108 +34,108 @@ export class MenuComponent implements OnInit {
       ],
     },
 
-   {
+    {
       id: '2',
       titre: 'Articles',
-      icon: 'fas fa-boxes',
+      icon: 'fas fa-boxes-stacked',
       url: '',
       sousMenu: [
         {
           id: '21',
           titre: 'Articles',
-          icon: 'fas fa-boxes',
-          url: 'articles'
+          icon: 'fas fa-boxes-stacked',
+          url: 'articles',
         },
         {
           id: '22',
           titre: 'Mouvements du stock',
-          icon: 'fab fa-stack-overflow',
-          url: 'mvtstk'
-        }
-      ]
+          icon: 'fas fa-arrow-right-arrow-left',
+          url: 'mvtstk',
+        },
+      ],
     },
 
-        {
+    {
       id: '3',
       titre: 'Clients',
-      icon: 'fas fa-users',
+      icon: 'fas fa-user-group',
       url: '',
       sousMenu: [
         {
           id: '31',
           titre: 'Clients',
           icon: 'fas fa-users',
-          url: 'clients'
+          url: 'clients',
         },
         {
           id: '32',
           titre: 'Commandes clients',
-          icon: 'fas fa-shopping-basket',
-          url: 'commandesclient'
-        }
-      ]
+          icon: 'fas fa-basket-shopping',
+          url: 'commandesclient',
+        },
+      ],
     },
 
-     {
+    {
       id: '4',
       titre: 'Fournisseurs',
-      icon: 'fas fa-users',
+      icon: 'fas fa-truck-field',
       url: '',
       sousMenu: [
         {
           id: '41',
           titre: 'Fournisseurs',
           icon: 'fas fa-users',
-          url: 'fournisseurs'
+          url: 'fournisseurs',
         },
         {
           id: '42',
           titre: 'Commandes fournisseurs',
           icon: 'fas fa-truck',
-          url: 'commandesfournisseur'
-        }
-      ]
+          url: 'commandesfournisseur',
+        },
+      ],
     },
 
     {
       id: '5',
-      titre: 'Parametrages',
-      icon: 'fas fa-cogs',
+      titre: 'Paramétrages',
+      icon: 'fas fa-gear',
       url: '',
       sousMenu: [
         {
           id: '51',
-          titre: 'Categories',
-          icon: 'fas fa-tools',
-          url: 'categories'
+          titre: 'Catégories',
+          icon: 'fas fa-tags',
+          url: 'categories',
         },
         {
           id: '52',
           titre: 'Utilisateurs',
-          icon: 'fas fa-users-cog',
-          url: 'utilisateurs'
-        }
-      ]
-    }
-
+          icon: 'fas fa-users-gear',
+          url: 'utilisateurs',
+        },
+      ],
+    },
   ];
 
-  constructor(
-   private router: Router
- ) { }
+  constructor(private router: Router) {}
 
   private lastSelectedMenu: Menu | undefined;
-  
 
   ngOnInit(): void {}
 
-    navigate(menu: Menu): void {
+  toggleGroupe(menu: Menu): void {
+    menu.open = !menu.open;
+  }
+
+  navigate(menu: Menu): void {
     if (this.lastSelectedMenu) {
       this.lastSelectedMenu.active = false;
     }
+    menu.open = true;
     menu.active = true;
     this.lastSelectedMenu = menu;
     this.router.navigate([menu.url]);
   }
-
 }
